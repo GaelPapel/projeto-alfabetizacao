@@ -1,42 +1,54 @@
-# 📘 Projeto Alfabetização
+# Projeto Alfabetização
 
-Um site/aplicativo educativo com o objetivo de auxiliar na **alfabetização de adultos**, utilizando jogos interativos e métodos inclusivos como a **Metodologia de Paulo Freire**.
+Um site educativo com o foco em auxiliar na **alfabetização de adultos**, utilizando jogos interativos e métodos inclusivos como a **Metodologia de Paulo Freire**.
+
+Este projeto se inspira nos princípios de Paulo Freire, buscando uma alfabetização que vá além da mera decodificação de palavras, conectando o aprendizado à realidade e às experiências dos alunos. A abordagem se baseará em **temas geradores** relevantes para o cotidiano dos adultos, promovendo o diálogo, a reflexão crítica e a valorização do seu conhecimento prévio.
 
 ---
 
-## 🧠 Objetivo
+## Objetivo 
 
 Desenvolver uma plataforma acessível e intuitiva que ensine leitura e escrita para pessoas analfabetas ou semianalfabetas, com foco em:
 
-- **Facilidade de uso**
-- **Acessibilidade (áudio e visual)**
-- **Aprendizado interativo**
-- **Conexão com outras pessoas na mesma jornada**
+- Facilidade de uso
+- Acessibilidade (áudio, visual, e potencialmente navegação por teclado)
+- Aprendizado interativo através de jogos, quizzes e atividades práticas
+- Criação de um espaço de troca e apoio entre pessoas na mesma jornada de aprendizado
 
 ---
 
-## 🔧 Funcionalidades
+## Funcionalidades
 
-- 🎮 Jogos e atividades educativas
-- 🔊 Áudio para auxílio na leitura
-- 👥 Conexão entre usuários
-- 🔐 Login e segurança de dados
+- **Jogos e atividades educativas:** Caça-palavras temáticos, jogos da memória com palavras e imagens, quizzes narrativos sobre situações do cotidiano, atividades de pareamento palavra-imagem e palavra-definição.
+- **Áudio para auxílio na leitura:** Pronúncia de palavras, narração de textos e instruções das atividades.
+- **Conexão entre usuários:** Fóruns de discussão sobre os temas geradores, espaços para compartilhar produções textuais e experiências de aprendizado.
 
 ---
 
-## 🛠️ Tecnologias
+## Tecnologias
 
-**Frontend:**  
-- HTML, CSS, JavaScript  
+**Frontend:**
+- HTML
+- CSS
+- JavaScript
 - Bootstrap
 
-**Backend:**  
+**Backend:**
 - Python (Flask ou Django)
 
-**Banco de Dados:**  
+**Banco de Dados:**
 - MySQL
 
 ---
 
-## 🗂️ Estrutura do Projeto (sugestão)
+## Próximos Passos
 
+1. Definição detalhada dos primeiros temas geradores.
+2. Criação dos protótipos das principais interfaces e atividades.
+3. Implementação das funcionalidades de áudio.
+
+---
+
+## Contato
+
+Email: gabrielsouzafreitas917@gmail.com
