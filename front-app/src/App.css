@@ -1,38 +1,103 @@
+/* src/App.css */
+
+/* Reset básico para evitar margens indesejadas */
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Garante que o html e body ocupem toda a altura */
+  overflow-x: hidden; /* Evita scroll horizontal indesejado */
+}
+
 .App {
-  text-align: center;
+  display: flex; /* Torna o App um container flexível */
+  min-height: 100vh; /* Ocupa toda a altura da viewport */
+  background-color: #f0f2f5;
+  font-family: Arial, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Estilos para o conteúdo principal (que estará ao lado da sidebar) */
+.App-main-content {
+  flex-grow: 1; /* Faz com que ocupe todo o espaço restante */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: center; /* Centraliza verticalmente o conteúdo dentro do main */
+  padding: 20px;
+  text-align: center;
+  box-sizing: border-box; /* Inclui padding e border na largura/altura total */
 }
 
-.App-link {
-  color: #61dafb;
+/* Os estilos abaixo são os que você já tinha, apenas confirmando */
+.App-header {
+  margin-bottom: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.App-header h1 {
+  font-size: 2.5em;
+  color: #000000;
+}
+
+.App-header p {
+  font-size: 1.2em;
+  color: #555;
+}
+
+.App-content {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.App-content p {
+  font-size: 1em;
+  color: #333;
+  line-height: 1.6;
+}
+
+.App-footer {
+  margin-top: 20px;
+  font-size: 0.8em;
+  color: #777;
+}
+
+/* Media Queries para responsividade básica da sidebar */
+@media (max-width: 768px) {
+  .App {
+    flex-direction: column; /* Em telas menores, a sidebar fica em cima do conteúdo */
   }
-  to {
-    transform: rotate(360deg);
+
+  /* Ajustes para a Sidebar em telas menores */
+  aside { /* Seleciona o SidebarContainer que é uma 'aside' */
+    width: 100% !important; /* Ocupa a largura total */
+    flex-direction: row !important; /* Itens ficam em linha */
+    justify-content: space-around !important; /* Espaça os botões */
+    padding: 10px 0 !important;
+    height: auto; /* Altura automática */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+  }
+  aside h2 { /* Esconde o título do menu em telas pequenas */
+    display: none;
+  }
+  aside ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+  aside li {
+    margin: 5px;
+  }
+  aside button {
+    width: auto !important; /* Botões se ajustam ao conteúdo */
+    padding: 10px 15px !important;
+    font-size: 0.9em !important; /* Reduz o tamanho da fonte */
+    margin: 0 !important; /* Remove margens extras */
+  }
+  aside button span { /* Ajuste para o ícone */
+    font-size: 1.2em !important;
   }
 }
