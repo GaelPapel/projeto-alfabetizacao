@@ -4,18 +4,19 @@ import styled from 'styled-components';
 // Importe ícones para as outras seções
 import { FaGraduationCap, FaBullseye, FaLightbulb, FaUsers, FaCheckCircle, FaLaptopCode, FaDatabase } from 'react-icons/fa';
 import { IoGameController, IoVolumeHigh } from 'react-icons/io5';
+import ReadTextButton from '../components/ReadTextButton/ReadTextButton'; // IMPORTADO: ReadTextButton
 
 // --- PALETA DE CORES SUGERIDA ---
 const Colors = {
   primary: '#8B4513',       // Marrom Chocolate (títulos principais)
   secondary: '#D2691E',     // Laranja Terracota (subtítulos, ícones de destaque)
-  accent1: '#4CAF50',       // Verde vibrante para ícones/destaques
-  accent2: '#2196F3',       // Azul vibrante para ícones/destaques
+  accent1: '#4CAF50',      // Verde vibrante para ícones/destaques
+  accent2: '#2196F3',      // Azul vibrante para ícones/destaques
   textDark: '#333333',      // Texto escuro para legibilidade
   textMedium: '#555555',    // Texto médio
   bgLight: '#F8F9FA',      // Fundo leve
   bgWhite: '#FFFFFF',      // Fundo branco de seções
-  cardBg: '#f0f2f5',        // Fundo de cards de equipe/tecnologia
+  cardBg: '#f0f2f5',         // Fundo de cards de equipe/tecnologia
   hoverLight: '#e2e4e8',    // Fundo de hover mais claro
 };
 
@@ -55,6 +56,7 @@ const Title = styled.h2`
   align-items: center; /* Alinha verticalmente */
   justify-content: center; /* Centraliza o conteúdo horizontalmente */
   gap: 15px; /* Espaço entre o ícone e o texto */
+  flex-wrap: wrap; /* ADICIONADO: Permite quebra de linha para o botão em telas pequenas */
 `;
 
 // Styled Component para a imagem do logo no título
@@ -68,6 +70,10 @@ const Subtitle = styled.h3`
   font-size: 2em;
   margin-bottom: 20px;
   text-align: center;
+  display: flex; /* ADICIONADO: Para alinhar o texto e o botão na mesma linha */
+  align-items: center; /* ADICIONADO: Para alinhar verticalmente o texto e o botão */
+  justify-content: center; /* ADICIONADO: Para centralizar o conteúdo flex */
+  flex-wrap: wrap; /* ADICIONADO: Permite quebra de linha para o botão em telas pequenas */
 `;
 
 const Paragraph = styled.p`
@@ -75,6 +81,9 @@ const Paragraph = styled.p`
   line-height: 1.9;
   color: ${Colors.textDark};
   margin-bottom: 20px;
+  display: flex; /* ADICIONADO: Para alinhar o texto e o botão na mesma linha */
+  align-items: center; /* ADICIONADO: Para alinhar verticalmente o texto e o botão */
+  flex-wrap: wrap; /* ADICIONADO: Permite quebra de linha para o botão em telas pequenas */
 `;
 
 // DEFINIÇÃO DO COMPONENTE LIST (para listas gerais)
@@ -92,6 +101,10 @@ const ListItem = styled.li`
   padding-left: 40px; /* Mais espaço para o ícone */
   position: relative;
   line-height: 1.5; /* Melhorar espaçamento */
+  display: flex; /* ADICIONADO: Para alinhar o texto e o botão na mesma linha */
+  align-items: center; /* ADICIONADO: Para alinhar verticalmente o texto e o botão */
+  flex-wrap: wrap; /* ADICIONADO: Permite quebra de linha para o botão em telas pequenas */
+
 
   & svg { /* Estiliza o ícone do React Icons diretamente */
     position: absolute;
@@ -100,7 +113,7 @@ const ListItem = styled.li`
     transform: translateY(-50%);
     font-size: 1.6em; /* Tamanho maior para o ícone */
     color: ${Colors.accent1}; /* Cor de destaque para o ícone */
-    margin-right: 10px;
+    margin-right: 10px; /* ADICIONADO: Ajuste para separar o ícone do texto */
   }
 `;
 
@@ -119,6 +132,8 @@ const TeamMemberCard = styled.div`
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   text-align: center;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  display: flex; /* ADICIONADO: Para o card ser um container flexível */
+  flex-direction: column; /* ADICIONADO: Conteúdo em coluna */
 
   &:hover {
     transform: translateY(-3px);
@@ -130,12 +145,21 @@ const MemberName = styled.h4`
   color: ${Colors.primary};
   font-size: 1.3em;
   margin-bottom: 5px;
+  display: flex; /* ADICIONADO: Para alinhar o texto e o botão na mesma linha */
+  align-items: center; /* ADICIONADO: Para alinhar verticalmente o texto e o botão */
+  justify-content: center; /* ADICIONADO: Para centralizar o conteúdo flex */
+  flex-wrap: wrap; /* ADICIONADO: Permite quebra de linha para o botão em telas pequenas */
 `;
 
 const MemberRole = styled.p`
   font-size: 0.95em;
   color: ${Colors.textMedium};
   margin-bottom: 10px;
+  flex-grow: 1; /* ADICIONADO: Para ocupar o espaço restante no TeamMemberCard */
+  display: flex; /* ADICIONADO: Para alinhar o texto e o botão na mesma linha */
+  align-items: center; /* ADICIONADO: Para alinhar verticalmente o texto e o botão */
+  justify-content: center; /* ADICIONADO: Para centralizar o conteúdo flex */
+  flex-wrap: wrap; /* ADICIONADO: Permite quebra de linha para o botão em telas pequenas */
 `;
 
 const TechList = styled.ul`
@@ -156,99 +180,154 @@ const TechItem = styled.li`
   font-size: 0.95em;
   font-weight: bold;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex; /* ADICIONADO: Para alinhar o texto e o botão na mesma linha */
+  align-items: center; /* ADICIONADO: Para alinhar verticalmente o texto e o botão */
+  gap: 5px; /* ADICIONADO: Espaço entre o ícone e o texto */
 `;
 
 // --- Componente QuemSomosPage ---
 function QuemSomosPage() {
+  // Textos para facilitar a passagem para o ReadTextButton
+  const titleText = "Sobre o Projeto Alfabetização";
+  const introText1 = "Este é um trabalho desenvolvido para a UNA Cristiano Machado, com o foco em auxiliar na alfabetização de adultos, utilizando jogos interativos e métodos inclusivos. Nosso projeto se inspira profundamente nos princípios de Paulo Freire, buscando uma alfabetização que vá além da mera decodificação de palavras. Acreditamos na conexão do aprendizado à realidade e às experiências de vida dos alunos. Nossa abordagem se baseia na utilização de temas geradores relevantes para o cotidiano dos adultos, promovendo o diálogo, a reflexão crítica e a valorização do seu conhecimento prévio.";
+  const objectiveSubtitle = "Nosso Objetivo";
+  const objectiveIntroText = "Desenvolver uma plataforma acessível e intuitiva que ensine leitura e escrita para pessoas analfabetas ou semianalfabetas. Nossos principais focos são:";
+  const objective4 = "Facilidade de uso: Uma interface simples e clara para todos os usuários. Acessibilidade: Suporte a áudio e recursos visuais para facilitar o aprendizado. Aprendizado interativo: Através de jogos, quizzes e atividades práticas que tornam o processo divertido. Comunidade: Criação de um espaço de troca e apoio mútuo entre pessoas na mesma jornada de aprendizado.";
+  const featuresSubtitle = "Funcionalidades Principais";
+  const feature1 = "Jogos e atividades educativas: Incluindo Caça-palavras temáticos, jogos da memória com palavras e imagens, quizzes narrativos sobre situações do cotidiano, e atividades de pareamento palavra-imagem e palavra-definição.";
+  const feature2 = "Áudio para auxílio na leitura: Pronúncia de palavras, narração de textos e instruções das atividades.";
+  const feature3 = "Conexão entre usuários: Fóruns de discussão sobre os temas geradores, e espaços para compartilhar produções textuais e experiências de aprendizado.";
+  const techSubtitle = "Tecnologias Utilizadas";
+  const techIntroText = "Nosso projeto é construído com as seguintes tecnologias robustas:";
+  const techHtml = "HTML";
+  const techCss = "CSS";
+  const techJs = "JavaScript";
+  const techReact = "React (Frontend)";
+  const techPhp = "PHP (Backend)";
+  const techMysql = "MySQL (Banco de Dados)";
+  const teamSubtitle = "Nossa Equipe e Colaboradores";
+
   return (
     <PageContainer>
       <Section>
         <Title>
-          {/* USANDO SEU FAVICON.PNG AQUI */}
-        <TitleLogo src="/assets/novo-logo.png" alt="Logo do Projeto Alfabetização" />
-          Sobre o Projeto Alfabetização
+          <TitleLogo src="/assets/novo-logo.png" alt="Logo do Projeto Alfabetização" />
+          {titleText}
+          <ReadTextButton text={titleText} /> {/* ADICIONADO: Botão de leitura para o título */}
         </Title>
         <Paragraph>
-          Este é um trabalho desenvolvido para a **UNA Cristiano Machado**, com o foco em auxiliar na alfabetização de adultos, utilizando jogos interativos e métodos inclusivos.
+          {introText1}
+          <ReadTextButton text={introText1} /> {/* ADICIONADO: Botão de leitura para o primeiro parágrafo */}
         </Paragraph>
         <Paragraph>
-          Nosso projeto se inspira profundamente nos princípios de **Paulo Freire**, buscando uma alfabetização que vá além da mera decodificação de palavras. Acreditamos na conexão do aprendizado à realidade e às experiências de vida dos alunos. Nossa abordagem se baseia na utilização de **temas geradores** relevantes para o cotidiano dos adultos, promovendo o diálogo, a reflexão crítica e a valorização do seu conhecimento prévio.
         </Paragraph>
       </Section>
 
       <Section>
-        <Subtitle>Nosso Objetivo</Subtitle>
+        <Subtitle>
+          {objectiveSubtitle}
+          <ReadTextButton text={objectiveSubtitle} /> {/* ADICIONADO: Botão de leitura para o subtítulo */}
+        </Subtitle>
         <Paragraph>
-          Desenvolver uma plataforma acessível e intuitiva que ensine leitura e escrita para pessoas analfabetas ou semianalfabetas. Nossos principais focos são:
+          {objectiveIntroText}
+          <ReadTextButton text={objectiveIntroText} /> {/* ADICIONADO: Botão de leitura para o parágrafo */}
         </Paragraph>
         <List>
           <ListItem>
-            <FaCheckCircle /> **Facilidade de uso:** Uma interface simples e clara para todos os usuários.
-          </ListItem>
-          <ListItem>
-            <FaCheckCircle /> **Acessibilidade:** Suporte a áudio e recursos visuais para facilitar o aprendizado.
-          </ListItem>
-          <ListItem>
-            <FaCheckCircle /> **Aprendizado interativo:** Através de jogos, quizzes e atividades práticas que tornam o processo divertido.
-          </ListItem>
-          <ListItem>
-            <FaCheckCircle /> **Comunidade:** Criação de um espaço de troca e apoio mútuo entre pessoas na mesma jornada de aprendizado.
+             {objective4}
+            <ReadTextButton text={objective4} /> {/* ADICIONADO: Botão de leitura para o item de lista */}
           </ListItem>
         </List>
       </Section>
 
       <Section>
-        <Subtitle>Funcionalidades Principais</Subtitle>
+        <Subtitle>
+          {featuresSubtitle}
+          <ReadTextButton text={featuresSubtitle} /> {/* ADICIONADO: Botão de leitura para o subtítulo */}
+        </Subtitle>
         <List>
           <ListItem>
-            <IoGameController /> **Jogos e atividades educativas:** Incluindo Caça-palavras temáticos, jogos da memória com palavras e imagens, quizzes narrativos sobre situações do cotidiano, e atividades de pareamento palavra-imagem e palavra-definição.
+            <IoGameController /> {feature1}
+            <ReadTextButton text={feature1} /> {/* ADICIONADO: Botão de leitura para o item de lista */}
           </ListItem>
           <ListItem>
-            <IoVolumeHigh /> **Áudio para auxílio na leitura:** Pronúncia de palavras, narração de textos e instruções das atividades.
+            <IoVolumeHigh /> {feature2}
+            <ReadTextButton text={feature2} /> {/* ADICIONADO: Botão de leitura para o item de lista */}
           </ListItem>
           <ListItem>
-            <FaUsers /> **Conexão entre usuários:** Fóruns de discussão sobre os temas geradores, e espaços para compartilhar produções textuais e experiências de aprendizado.
+            <FaUsers /> {feature3}
+            <ReadTextButton text={feature3} /> {/* ADICIONADO: Botão de leitura para o item de lista */}
           </ListItem>
         </List>
       </Section>
 
       <Section>
-        <Subtitle>Tecnologias Utilizadas</Subtitle>
+        <Subtitle>
+          {techSubtitle}
+          <ReadTextButton text={techSubtitle} /> {/* ADICIONADO: Botão de leitura para o subtítulo */}
+        </Subtitle>
         <Paragraph>
-          Nosso projeto é construído com as seguintes tecnologias robustas:
+          {techIntroText}
+          
         </Paragraph>
         <TechList>
-          <TechItem><FaLaptopCode /> HTML</TechItem>
-          <TechItem><FaLaptopCode /> CSS</TechItem>
-          <TechItem><FaLaptopCode /> JavaScript</TechItem>
-          <TechItem><FaLaptopCode /> React (Frontend)</TechItem>
-          <TechItem><FaLaptopCode /> PHP (Backend)</TechItem>
-          <TechItem><FaDatabase /> MySQL (Banco de Dados)</TechItem>
+          <TechItem>
+            <FaLaptopCode /> {techHtml}
+            
+          </TechItem>
+          <TechItem>
+            <FaLaptopCode /> {techCss}
+            
+          </TechItem>
+          <TechItem>
+            <FaLaptopCode /> {techJs}
+            
+          </TechItem>
+          <TechItem>
+            <FaLaptopCode /> {techReact}
+            
+          </TechItem>
+          <TechItem>
+            <FaLaptopCode /> {techPhp}
+           
+          </TechItem>
+          <TechItem>
+            <FaDatabase /> {techMysql}
+           
+          </TechItem>
         </TechList>
       </Section>
 
       <Section>
-        <Subtitle>Nossa Equipe e Colaboradores</Subtitle>
+        <Subtitle>
+          {teamSubtitle}
+          <ReadTextButton text={teamSubtitle} /> {/* ADICIONADO: Botão de leitura para o subtítulo */}
+        </Subtitle>
         <TeamGrid>
           <TeamMemberCard>
             <MemberName>Gabriel Freitas</MemberName>
             <MemberRole>Desenvolvedor Frontend</MemberRole>
+            <ReadTextButton text="Gabriel Freitas, Desenvolvedor Frontiendi" /> {/* ADICIONADO: Botão de leitura para nome e cargo */}
           </TeamMemberCard>
           <TeamMemberCard>
             <MemberName>Emerson Pedrosa</MemberName>
             <MemberRole>Desenvolvedor Backend</MemberRole>
+            <ReadTextButton text="Emerson Pedrosa, Desenvolvedor Backende" /> {/* ADICIONADO: Botão de leitura para nome e cargo */}
           </TeamMemberCard>
           <TeamMemberCard>
             <MemberName>Gabriel Haziel</MemberName>
             <MemberRole>Participante</MemberRole>
+            <ReadTextButton text="Gabriel Haziel, Participante" /> {/* ADICIONADO: Botão de leitura para nome e cargo */}
           </TeamMemberCard>
           <TeamMemberCard>
             <MemberName>Artur Camargos</MemberName>
             <MemberRole>Participante</MemberRole>
+            <ReadTextButton text="Artur Camargos, Participante" /> {/* ADICIONADO: Botão de leitura para nome e cargo */}
           </TeamMemberCard>
           <TeamMemberCard>
             <MemberName>Bernardo Araujo</MemberName>
             <MemberRole>Participante</MemberRole>
+            <ReadTextButton text="Bernardo Araujo, Participante" /> {/* ADICIONADO: Botão de leitura para nome e cargo */}
           </TeamMemberCard>
         </TeamGrid>
       </Section>

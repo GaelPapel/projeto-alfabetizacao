@@ -3,12 +3,13 @@ import React from 'react';
 import styled from 'styled-components';
 // Importe um ícone para as configurações
 import { FaCog } from 'react-icons/fa'; // Ícone de engrenagem, muito comum para configurações
+import ReadTextButton from '../components/ReadTextButton/ReadTextButton'; // IMPORTADO: ReadTextButton
 
 // --- PALETA DE CORES (usando as já definidas no seu projeto para consistência) ---
 const Colors = {
   primary: '#8B4513',       // Marrom Chocolate (títulos principais)
   secondary: '#D2691E',     // Laranja Terracota (subtítulos)
-  accent1: '#4CAF50',       // Verde vibrante para ícones/destaques (se quiser usar)
+  accent1: '#4CAF50',      // Verde vibrante para ícones/destaques (se quiser usar)
   textDark: '#333333',      // Texto escuro
   textMedium: '#555555',    // Texto médio
   bgLight: '#F8F9FA',      // Fundo leve
@@ -51,6 +52,7 @@ const Title = styled.h2`
   align-items: center; /* Alinha verticalmente */
   justify-content: center; /* Centraliza o conteúdo horizontalmente */
   gap: 15px; /* Espaço entre o ícone e o texto */
+  flex-wrap: wrap; /* ADICIONADO: Permite quebra de linha para o botão em telas pequenas */
 
   & svg { /* Estilos para o ícone */
     font-size: 0.9em; /* Ajusta o tamanho do ícone em relação ao texto */
@@ -63,6 +65,10 @@ const Paragraph = styled.p`
   line-height: 1.9;
   color: ${Colors.textDark};
   margin-bottom: 20px;
+  display: flex; /* ADICIONADO: Para alinhar o texto e o botão na mesma linha */
+  align-items: center; /* ADICIONADO: Para alinhar verticalmente o texto e o botão */
+  flex-wrap: wrap; /* ADICIONADO: Permite quebra de linha para o botão em telas pequenas */
+  justify-content: center; /* ADICIONADO: Para centralizar o conteúdo flex */
 `;
 
 const LinkGroup = styled.div`
@@ -78,6 +84,11 @@ const StyledLink = styled.a`
   text-decoration: none;
   font-weight: bold;
   transition: color 0.2s ease-in-out;
+  /* ADICIONADO: para permitir que o ReadTextButton seja inserido ao lado se necessário */
+  display: flex; 
+  align-items: center;
+  justify-content: center; /* Centraliza o link e o botão */
+  flex-wrap: wrap; 
 
   &:hover {
     color: ${Colors.primary};
@@ -87,23 +98,37 @@ const StyledLink = styled.a`
 
 // --- Componente ConfigPage ---
 function ConfigPage() {
+  const introText1 = "Bem-vindo à página de Configurações! Aqui você poderá personalizar sua experiência com o Projeto Alfabetização.";
+  const introText2 = "As opções de configuração, como preferências de áudio, tema visual (modo escuro/claro) e tamanho da fonte, serão implementadas em futuras atualizações.";
+  const privacyPolicyText = "Política de Privacidade";
+  const termsOfUseText = "Termos de Uso";
+
   return (
     <PageContainer>
       <Section>
         <Title>
           <FaCog /> {/* Adicionando o ícone de engrenagem aqui */}
           Configurações
+          <ReadTextButton text="Configurações" /> {/* ADICIONADO: Botão de leitura para o título */}
         </Title>
         <Paragraph>
-          Bem-vindo à página de Configurações! Aqui você poderá personalizar sua experiência com o Projeto Alfabetização.
+          {introText1}
+          <ReadTextButton text={introText1} /> {/* ADICIONADO: Botão de leitura para o primeiro parágrafo */}
         </Paragraph>
         <Paragraph>
-          As opções de configuração, como preferências de áudio, tema visual (modo escuro/claro) e tamanho da fonte, serão implementadas em futuras atualizações.
+          {introText2}
+          <ReadTextButton text={introText2} /> {/* ADICIONADO: Botão de leitura para o segundo parágrafo */}
         </Paragraph>
 
         <LinkGroup>
-          <StyledLink href="/politica-de-privacidade">Política de Privacidade</StyledLink>
-          <StyledLink href="/termos-de-uso">Termos de Uso</StyledLink>
+          <StyledLink href="/politica-de-privacidade">
+            {privacyPolicyText}
+            
+          </StyledLink>
+          <StyledLink href="/termos-de-uso">
+            {termsOfUseText}
+            
+          </StyledLink>
         </LinkGroup>
       </Section>
     </PageContainer>

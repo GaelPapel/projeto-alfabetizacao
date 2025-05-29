@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaBrain, FaEdit } from 'react-icons/fa'; // Removido FaSearch
-import { Link } from 'react-router-dom'; // Importado Link para navegaçã
+import { FaBrain, FaEdit } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import ReadTextButton from '../components/ReadTextButton/ReadTextButton'; // IMPORTADO: ReadTextButton
 
 // --- Styled Components para a JogosPage ---
 const PageContainer = styled.div`
@@ -27,6 +28,16 @@ const Section = styled.section`
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
   box-sizing: border-box;
+`;
+
+// Novo styled component para conter texto e botão de fala (usado fora dos cards de jogo)
+const TextWithReadButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centraliza o conteúdo horizontalmente */
+  gap: 10px; /* Espaço entre o texto e o botão */
+  flex-wrap: wrap; /* Permite quebra de linha em telas menores */
+  text-align: center; /* Garante que o texto dentro do flexbox permaneça centralizado */
 `;
 
 const Title = styled.h2`
@@ -79,6 +90,12 @@ const StyledGameCard = styled(Link)`
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
     background-color: #e2e4e8; /* Cor um pouco mais escura no hover */
   }
+
+  /* Novo estilo para o ReadTextButton dentro do GameCard para posicionamento */
+  ${ReadTextButton} {
+    margin-top: 15px; /* Adiciona espaço entre a descrição e o botão de áudio */
+    align-self: center; /* Garante que o botão fique centralizado horizontalmente no card */
+  }
 `;
 
 const GameIcon = styled.div`
@@ -101,36 +118,60 @@ const GameDescription = styled.p`
 
 // --- Componente JogosPage ---
 function JogosPage() {
+  // Textos para facilitar a passagem para o ReadTextButton
+  const titleText = "Jogos Educativos";
+  const introParagraphText = "Bem-vindo à nossa seção de jogos! Aqui você encontrará diversas atividades lúdicas para praticar a leitura e a escrita de forma interativa e divertida. Clique em um jogo para começar!";
+  const subtitleText = "Nossos Jogos Disponíveis";
+  const memoryGameTitle = "Jogo da Memória";
+  const memoryGameDescription = "Teste sua memória e identifique pares de palavras e imagens.";
+  const mountWordGameTitle = "Monte a Palavra";
+  const mountWordGameDescription = "Desembaralhe as letras e forme a palavra correta.";
+
   return (
     <PageContainer>
       <Section>
-        <Title>Jogos Educativos</Title>
+        <Title>
+          <TextWithReadButton> {/* Mantido para o título da página */}
+            {titleText}
+            <ReadTextButton text={titleText} />
+          </TextWithReadButton>
+        </Title>
         <Paragraph>
-          Bem-vindo à nossa seção de jogos! Aqui você encontrará diversas atividades lúdicas para praticar a leitura e a escrita de forma interativa e divertida. Clique em um jogo para começar!
+          <TextWithReadButton> {/* Mantido para o parágrafo introdutório */}
+            {introParagraphText}
+            <ReadTextButton text={introParagraphText} />
+          </TextWithReadButton>
         </Paragraph>
       </Section>
 
       <Section>
-        <Subtitle>Nossos Jogos Disponíveis</Subtitle>
+        <Subtitle>
+          <TextWithReadButton> {/* Mantido para o subtítulo da seção */}
+            {subtitleText}
+            <ReadTextButton text={subtitleText} />
+          </TextWithReadButton>
+        </Subtitle>
         <GamesGrid>
           {/* Jogo da Memória como um Link */}
-          {/* O 'to' deve corresponder à rota que você vai definir no App.js */}
-          <StyledGameCard to="/jogos/memoria"> {/* ALTERADO: Aponta para a rota do jogo de memória */}
+          <StyledGameCard to="/jogos/memoria">
             <GameIcon><FaBrain /></GameIcon>
-            <GameTitle>Jogo da Memória</GameTitle>
+            <GameTitle>
+              {memoryGameTitle} {/* Texto do título do jogo */}
+            </GameTitle>
             <GameDescription>
-              Teste sua memória e identifique pares de palavras e imagens.
-            </GameDescription>
+              {memoryGameDescription} {/* Texto da descrição do jogo */}
+            </GameDescription>            
           </StyledGameCard>
 
           {/* Monte a Palavra como um Link */}
-          {/* O 'to' deve corresponder à rota que você vai definir no App.js */}
-          <StyledGameCard to="/jogos/montapalavra"> {/* ALTERADO: Aponta para a rota do jogo de montar palavra */}
+          <StyledGameCard to="/jogos/montapalavra">
             <GameIcon><FaEdit /></GameIcon>
-            <GameTitle>Monte a Palavra</GameTitle>
+            <GameTitle>
+              {mountWordGameTitle} {/* Texto do título do jogo */}
+            </GameTitle>
             <GameDescription>
-              Desembaralhe as letras e forme a palavra correta.
-            </GameDescription>
+              {mountWordGameDescription} {/* Texto da descrição do jogo */}
+            </GameDescription>           
           </StyledGameCard>
 
           {/* Você pode adicionar mais StyledGameCards aqui futuramente */}
