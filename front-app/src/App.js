@@ -1,74 +1,52 @@
 // src/App.js
-import React, { useState } from 'react';
-import './App.css';
-import Sidebar from './components/Sidebar/Sidebar';
-// import Test from './components/Test'; // Removido por enquanto para simplificar.
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './App.css'; 
+import Sidebar from './components/Sidebar/Sidebar'; //componente Sidebar
+
+//todos os componentes de página
+import HomePage from './pages/HomePage';
+import PalavrasPage from './pages/PalavrasPage';
+import JogosPage from './pages/JogosPage';
+import ForumPage from './pages/ForumPage';
+import QuemSomosPage from './pages/QuemSomosPage';
+import ConfigPage from './pages/ConfigPage';
+
+//componentes de jogo da subpasta 'gamepage'
+import MemoriaGame from './pages/gamepage/MemoriaGame';
+import PalavraGame from './pages/gamepage/PalavraGame'; // Importando PalavraGame
 
 function App() {
-  const [activePage, setActivePage] = useState('home');
-
-  const handleNavigation = (page) => {
-    setActivePage(page);
-    alert(`Navegando para: ${page}`);
-  };
-
   return (
-    <div className="App">
-      <Sidebar activeItem={activePage} onNavigate={handleNavigation} />
+    <Router>
+      <div className="App">
+        <Sidebar />
 
-      <main className="App-main-content">
-        <header className="App-header">
-          <h1>Bem-vindo ao Projeto Alfabetização!</h1>
-          <p>Esta é a sua página inicial.</p>
-        </header>
+        <main className="App-main-content">
+          <section className="App-content">
+            <Routes>
+              {/* Rotas principais */}
+              <Route path="/" element={<HomePage />} />
+              <Route path="/home" element={<HomePage />} />
+              <Route path="/palavras" element={<PalavrasPage />} />
+              <Route path="/jogos" element={<JogosPage />} />
+              <Route path="/forum" element={<ForumPage />} />
+              <Route path="/quem_somos" element={<QuemSomosPage />} />
+              <Route path="/config" element={<ConfigPage />} />
 
-        <section className="App-content">
-          {activePage === 'home' && (
-            <>
-              <p>Aqui você verá o conteúdo da Página Inicial.</p>
-              <p>blablablablabla</p>
-              {/* <Test /> */}
-            </>
-          )}
-          {activePage === 'palavras' && (
-            <>
-              <p>Bem-vindo à seção de Palavras do Dia!</p>
-              <p>Aqui teremos palavras.</p>
-            </>
-          )}
-          {activePage === 'jogos' && (
-            <>
-              <p>Divirta-se com os Jogos Educativos!</p>
-              <p>Ainda nao sei quais jogos terá.</p>
-            </>
-          )}
-          {activePage === 'forum' && (
-            <>
-              <h2>Bem-vindo ao Fórum!</h2>
-              <p>Espaço para discussões, dúvidas e compartilhamento de ideias.</p>
-            </>
-          )}
-          {activePage === 'quem_somos' && (
-            <>
-              <h2>Sobre nós - Quem somos</h2>
-              <p>Conheça mais sobre o Projeto Alfabetização e nossa missão.</p>
-            </>
-          )}
-          {activePage === 'config' && (
-            <>
-              <p>Configurações do aplicativo.</p>
-              <p>Ajuste suas preferências aqui.</p>
-            </> 
-          )}
+              {/* --- ADICIONE ESTAS DUAS ROTAS PARA OS JOGOS ESPECÍFICOS --- */}
+              <Route path="/jogos/memoria" element={<MemoriaGame />} />
+              <Route path="/jogos/montapalavra" element={<PalavraGame />} /> 
+              <Route path="*" element={<h2>Página Não Encontrada (404)</h2>} />
+            </Routes>
+          </section>
 
-          
-        </section>
-
-        <footer className="App-footer">
-          <p>&copy; 2025 Projeto Alfabetização.</p>
-        </footer>
-      </main>
-    </div>
+          <footer className="App-footer">
+            <p>&copy; 2025 Projeto Alfabetização.</p>
+          </footer>
+        </main>
+      </div>
+    </Router>
   );
 }
 

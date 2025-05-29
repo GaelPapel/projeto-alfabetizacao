@@ -1,6 +1,4 @@
 /* src/App.css */
-
-/* Reset básico para evitar margens indesejadas */
 body, html, #root {
   margin: 0;
   padding: 0;
@@ -11,7 +9,7 @@ body, html, #root {
 .App {
   display: flex; /* Torna o App um container flexível */
   min-height: 100vh; /* Ocupa toda a altura da viewport */
-  background-color: #f0f2f5;
+  background-color: #f0f2f5; 
   font-family: Arial, sans-serif;
 }
 
@@ -20,16 +18,21 @@ body, html, #root {
   flex-grow: 1; /* Faz com que ocupe todo o espaço restante */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center; /* Centraliza verticalmente o conteúdo dentro do main */
-  padding: 20px;
-  text-align: center;
-  box-sizing: border-box; /* Inclui padding e border na largura/altura total */
-}
+  align-items: center; /* Mantém o conteúdo centralizado horizontalmente dentro de main */
+  justify-content: flex-start; /* Alinha o conteúdo ao topo de main */
+  padding: 20px; /* Padding geral para o conteúdo */
+  box-sizing: border-box;
+  width: 100%;
 
-/* Os estilos abaixo são os que você já tinha, apenas confirmando */
+  /* --- PARA A SIDEBAR FIXA: Espaço para ela no conteúdo principal --- */
+  margin-left: 250px; /* Cria um espaço à esquerda para a sidebar fixa (largura da sidebar) */
+  /* --- FIM DA SIDEBAR FIXA --- */
+}
 .App-header {
   margin-bottom: 20px;
+  text-align: center;
+  width: 100%;
+  background: none;
 }
 
 .App-header h1 {
@@ -43,15 +46,18 @@ body, html, #root {
 }
 
 .App-content {
-  background-color: #ffffff;
+  background-color: #ffffff; 
   padding: 30px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   margin-bottom: 30px;
-  max-width: 600px;
+  max-width: 1000px;
   width: 100%;
-}
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 
+}
 .App-content p {
   font-size: 1em;
   color: #333;
@@ -59,27 +65,33 @@ body, html, #root {
 }
 
 .App-footer {
-  margin-top: 20px;
+  margin-top: auto;
   font-size: 0.8em;
-  color: #777;
+  color: #777; 
+  width: 100%;
+  text-align: center;
+  padding: 20px; /* Padding original */
+}
+.sidebar-container {
 }
 
 /* Media Queries para responsividade básica da sidebar */
 @media (max-width: 768px) {
   .App {
-    flex-direction: column; /* Em telas menores, a sidebar fica em cima do conteúdo */
+    flex-direction: column;
   }
 
-  /* Ajustes para a Sidebar em telas menores */
   aside { /* Seleciona o SidebarContainer que é uma 'aside' */
-    width: 100% !important; /* Ocupa a largura total */
-    flex-direction: row !important; /* Itens ficam em linha */
-    justify-content: space-around !important; /* Espaça os botões */
+    width: 100% !important;
+    flex-direction: row !important;
+    justify-content: space-around !important;
     padding: 10px 0 !important;
-    height: auto; /* Altura automática */
+    height: auto;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+    position: relative;
+    z-index: auto;
   }
-  aside h2 { /* Esconde o título do menu em telas pequenas */
+  aside h2 {
     display: none;
   }
   aside ul {
@@ -92,12 +104,20 @@ body, html, #root {
     margin: 5px;
   }
   aside button {
-    width: auto !important; /* Botões se ajustam ao conteúdo */
+    width: auto !important;
     padding: 10px 15px !important;
-    font-size: 0.9em !important; /* Reduz o tamanho da fonte */
-    margin: 0 !important; /* Remove margens extras */
+    font-size: 0.9em !important;
+    margin: 0 !important;
   }
-  aside button span { /* Ajuste para o ícone */
+  aside button span {
     font-size: 1.2em !important;
   }
+
+  /* --- PARA A SIDEBAR FIXA RESPONSIVA: Conteúdo principal se ajusta --- */
+  .App-main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+    padding: 20px !important;
+  }
+  /* --- FIM DA SIDEBAR FIXA RESPONSIVA --- */
 }

@@ -1,26 +1,32 @@
-
 // src/components/Sidebar/Sidebar.js
 import React from 'react';
 import styled from 'styled-components';
-import { FaHome, FaBook, FaPuzzlePiece, FaQuestion,} from 'react-icons/fa';
-import { AiFillMessage } from 'react-icons/ai'; // Já importado, perfeito!
+import { FaHome, FaBook, FaPuzzlePiece, FaQuestion, FaCog } from 'react-icons/fa';
+import { AiFillMessage } from 'react-icons/ai';
+import { Link, useLocation } from 'react-router-dom';
 
 // --- Componentes Estilizados (Styled Components) ---
 const SidebarContainer = styled.aside`
   width: 250px;
-  background-color: rgb(26, 26, 26); /* Cor de fundo amarela/laranja, como você definiu */
+  background-color: #222222; /* ALTERADO: Fundo preto escuro */
   padding: 20px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-  color: white;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.4); /* Sombra mais escura */
+  color: white; /* Cor do texto padrão para branco */
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 1000;
 `;
 
 const SidebarHeader = styled.h2`
   font-size: 1.8em;
   margin-bottom: 30px;
-  color: #ecf0f1;
+  color: #eeeeee; /* ALTERADO: Branco quase puro para o título */
 `;
 
 const NavList = styled.ul`
@@ -34,14 +40,14 @@ const NavItem = styled.li`
   width: 100%;
 `;
 
-const NavButton = styled.button`
+const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
   gap: 15px;
   width: 90%;
   padding: 15px 20px;
-  background-color: rgb(49, 49, 49); /* Cor de fundo do botão, como você definiu */
-  color: white;
+  background-color: #333333; /* ALTERADO: Fundo dos botões em cinza escuro */
+  color: white; /* Texto dos botões em branco */
   border: none;
   border-radius: 8px;
   font-size: 1.1em;
@@ -49,14 +55,15 @@ const NavButton = styled.button`
   transition: background-color 0.3s ease, transform 0.2s ease;
   text-align: left;
   margin: 0 auto;
+  text-decoration: none;
 
   &:hover {
-    background-color: rgb(168, 168, 168); /* Cor de fundo ao passar o mouse, como você definiu */
+    background-color: #555555; /* ALTERADO: Cinza um pouco mais claro no hover */
     transform: translateX(5px);
   }
 
   &.active {
-    background-color: rgb(112, 112, 112); /* Cor para o item ativo, como você definiu */
+    background-color: #000000; /* ALTERADO: Fundo preto puro para o item ativo */
     font-weight: bold;
   }
 `;
@@ -68,59 +75,69 @@ const IconWrapper = styled.span`
   justify-content: center;
 `;
 
-// --- Componente Sidebar Principal ---
-function Sidebar({ activeItem, onNavigate }) {
+function Sidebar() {
+  const location = useLocation();
+
+  const isActive = (path) => location.pathname === path;
+
   return (
     <SidebarContainer>
       <SidebarHeader> Menu </SidebarHeader>
       <NavList>
         <NavItem>
-          <NavButton
-            className={activeItem === 'home' ? 'active' : ''}
-            onClick={() => onNavigate('home')}
+          <StyledLink
+            to="/"
+            className={isActive('/') || isActive('/home') ? 'active' : ''} // Adicionado /home como ativo para a página inicial
           >
             <IconWrapper><FaHome /></IconWrapper>
             Página Inicial
-          </NavButton>
+          </StyledLink>
         </NavItem>
         <NavItem>
-          <NavButton
-            className={activeItem === 'palavras' ? 'active' : ''}
-            onClick={() => onNavigate('palavras')}
+          <StyledLink
+            to="/palavras"
+            className={isActive('/palavras') ? 'active' : ''}
           >
             <IconWrapper><FaBook /></IconWrapper>
             Palavras do Dia
-          </NavButton>
+          </StyledLink>
         </NavItem>
         <NavItem>
-          <NavButton
-            className={activeItem === 'jogos' ? 'active' : ''}
-            onClick={() => onNavigate('jogos')}
+          <StyledLink
+            to="/jogos"
+            className={isActive('/jogos') ? 'active' : ''}
           >
             <IconWrapper><FaPuzzlePiece /></IconWrapper>
             Jogos Educativos
-          </NavButton>
+          </StyledLink>
         </NavItem>
         <NavItem>
-          <NavButton
-            className={activeItem === 'forum' ? 'active' : ''} // Este é o item 'forum'
-            onClick={() => onNavigate('forum')}
+          <StyledLink
+            to="/forum"
+            className={isActive('/forum') ? 'active' : ''}
           >
-            <IconWrapper><AiFillMessage /></IconWrapper> {/* O ícone AiFillMessage para o Fórum */}
+            <IconWrapper><AiFillMessage /></IconWrapper>
             Forum
-          </NavButton>
+          </StyledLink>
         </NavItem>
-        {/* CORREÇÃO AQUI: Este NavItem deve ser um item irmão, não filho do anterior */}
         <NavItem>
-          <NavButton
-            className={activeItem === 'quem_somos' ? 'active' : ''}
-            onClick={() => onNavigate('quem_somos')}
+          <StyledLink
+            to="/quem_somos"
+            className={isActive('/quem_somos') ? 'active' : ''}
           >
-            <IconWrapper><FaQuestion /></IconWrapper> {/* Use FaQuestion para 'Quem somos' */}
+            <IconWrapper><FaQuestion /></IconWrapper>
             Quem somos
-          </NavButton>
+          </StyledLink>
         </NavItem>
-        {/* Adicione mais itens aqui */}
+        <NavItem>
+          <StyledLink
+            to="/config"
+            className={isActive('/config') ? 'active' : ''}
+          >
+            <IconWrapper><FaCog /></IconWrapper>
+            Configurações
+          </StyledLink>
+        </NavItem>
       </NavList>
     </SidebarContainer>
   );
