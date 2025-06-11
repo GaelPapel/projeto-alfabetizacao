@@ -3,16 +3,12 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'; 
 import Sidebar from './components/Sidebar/Sidebar'; //componente Sidebar
-
-//todos os componentes de página
 import HomePage from './pages/HomePage';
 import PalavrasPage from './pages/PalavrasPage';
 import JogosPage from './pages/JogosPage';
 import ForumPage from './pages/ForumPage';
 import QuemSomosPage from './pages/QuemSomosPage';
 import ConfigPage from './pages/ConfigPage';
-
-//componentes de jogo da subpasta 'gamepage'
 import MemoriaGame from './pages/gamepage/MemoriaGame';
 import PalavraGame from './pages/gamepage/PalavraGame'; // Importando PalavraGame
 

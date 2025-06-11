@@ -13,7 +13,7 @@
 
 .read-text-button,
 .read-text-stop-button {
-  background-color: #3498db; /* Azul */
+  background-color: #ffffff; /* Azul */
   color: white;
   border: none;
   border-radius: 50%; /* Botão redondo */
@@ -31,7 +31,7 @@
 
 .read-text-button:hover,
 .read-text-stop-button:hover {
-  background-color: #2980b9;
+  background-color: #ffffff;
   transform: scale(1.05);
 }
 

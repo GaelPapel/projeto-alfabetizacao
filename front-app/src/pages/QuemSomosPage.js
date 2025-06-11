@@ -316,18 +316,18 @@ function QuemSomosPage() {
           </TeamMemberCard>
           <TeamMemberCard>
             <MemberName>Gabriel Haziel</MemberName>
-            <MemberRole>Participante</MemberRole>
-            <ReadTextButton text="Gabriel Haziel, Participante" /> {/* ADICIONADO: Botão de leitura para nome e cargo */}
+            
+            <ReadTextButton text= "Gabriel Haziel"/> {/* ADICIONADO: Botão de leitura para nome e cargo */}
           </TeamMemberCard>
           <TeamMemberCard>
             <MemberName>Artur Camargos</MemberName>
-            <MemberRole>Participante</MemberRole>
-            <ReadTextButton text="Artur Camargos, Participante" /> {/* ADICIONADO: Botão de leitura para nome e cargo */}
+           
+            <ReadTextButton text= "Artur Camargos"/> {/* ADICIONADO: Botão de leitura para nome e cargo */}
           </TeamMemberCard>
           <TeamMemberCard>
             <MemberName>Bernardo Araujo</MemberName>
-            <MemberRole>Participante</MemberRole>
-            <ReadTextButton text="Bernardo Araujo, Participante" /> {/* ADICIONADO: Botão de leitura para nome e cargo */}
+            
+            <ReadTextButton text="Bernardo Araujo"/> {/* ADICIONADO: Botão de leitura para nome e cargo */}
           </TeamMemberCard>
         </TeamGrid>
       </Section>
