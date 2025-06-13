@@ -1,0 +1,82 @@
+/* src/components/ReadTextButton/ReadTextButton.css */
+
+.read-text-button-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 10px;
+  
+  vertical-align: text-bottom; /* Ajuste para melhor alinhamento com a linha de texto */
+  
+  white-space: nowrap; 
+}
+
+.read-text-button,
+.read-text-stop-button {
+  background-color: #ffffff; /* Azul */
+  color: white;
+  border: none;
+  border-radius: 50%; /* Botão redondo */
+  width: 30px; /* Largura e altura para fazer um círculo */
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* font-size: 1.2em; -- REMOVIDO daqui para controlar via o .icon */
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  flex-shrink: 0;
+  padding: 0; 
+}
+
+.read-text-button:hover,
+.read-text-stop-button:hover {
+  background-color: #ffffff;
+  transform: scale(1.05);
+}
+
+.read-text-button.speaking {
+  background-color: #e67e22; /* Laranja quando falando */
+}
+
+.read-text-button.paused {
+  background-color: #f39c12; /* Amarelo quando pausado */
+}
+
+.read-text-stop-button {
+  background-color: #e74c3c; /* Vermelho para parar */
+}
+
+.read-text-stop-button:hover {
+  background-color: #c0392b;
+}
+
+/* Ajuste para o ícone especificamente */
+.read-text-button .icon,
+.read-text-stop-button .icon {
+  line-height: 1; 
+  font-size: 1.2em; /* Tamanho do ícone, mantido aqui ou ajustado conforme necessário */
+  display: flex; /* Para centralizar o ícone se ele tiver mais espaço */
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Garante que o ícone ocupe a altura do botão */
+  width: 100%; /* Garante que o ícone ocupe a largura do botão */
+}
+
+
+@media (max-width: 768px) {
+  .read-text-button,
+  .read-text-stop-button {
+    width: 25px;
+    height: 25px;
+  }
+  /* Ajuste o tamanho do ícone para telas menores */
+  .read-text-button .icon,
+  .read-text-stop-button .icon {
+      font-size: 1em; 
+  }
+
+  .read-text-button-container {
+      margin-left: 5px;
+  }
+}
