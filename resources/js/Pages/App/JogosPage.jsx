@@ -124,8 +124,8 @@ function JogosPage() {
   const subtitleText = "Nossos Jogos Disponíveis";
   const memoryGameTitle = "Jogo da Memória";
   const memoryGameDescription = "Teste sua memória e identifique pares de palavras e imagens.";
-  const mountWordGameTitle = "Monte a Palavra";
-  const mountWordGameDescription = "Desembaralhe as letras e forme a palavra correta.";
+  const mountWordGameTitle = "Desafio Visual";
+  const mountWordGameDescription = "Acerte o nome de cada imagem";
 
   return (
     <PageContainer>

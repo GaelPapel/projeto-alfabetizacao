@@ -22,15 +22,6 @@ const Content = styled.p`
   line-height: 1.6;
 `;
 
-// function PalavrasPage() {
-//   return (
-//     <PageContainer>
-//       <Title>Palavras do Dia</Title>
-//       <Content>Nesta seção, você aprenderá novas palavras e expandirá seu vocabulário.</Content>
-//       <Content>Fique atento às atualizações diárias!</Content>
-//     </PageContainer>
-//   );
-// }
 function PalavrasPage() {
   const [palavra, setPalavra] = useState(null);
   const [questao, setQuestao] = useState(null);
