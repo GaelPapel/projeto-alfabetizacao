@@ -29,7 +29,7 @@ function PalavrasPage() {
   const [mensagem, setMensagem] = useState('');
   const buscarPalavra = async () => {
     try {
-      const resposta = await fetch('/palavras');
+      const resposta = await fetch('/api/palavras');
       const dados = await resposta.json();
       
       setPalavra(dados[0].palavra);
