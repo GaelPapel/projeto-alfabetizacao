@@ -15,7 +15,7 @@ const GAME_PAIRS_DATA = [
     { id: 4, value: "GATO" },
     { id: 5, value: "PATO" },
     { id: 6, value: "PEIXE" },
-    { id: 7, value: "LARANJA" }, // Adicionei mais para ter mais pares
+    { id: 7, value: "OVO" },
     { id: 8, value: "MAÇÃ" },
     { id: 9, value: "SOL" },
     { id: 10, value: "LUA" },
@@ -177,7 +177,7 @@ const MemoriaGame = () => {
 
                 {gameOver && (
                     <div className={styles.endGameScreen}>
-                        <h2>🎉 Parabéns! Você Venceu! 🎉</h2>
+                        <h2>Parabéns! Você Venceu!</h2>
                         <p>Você encontrou todos os {GAME_PAIRS_DATA.length} pares em {moves} movimentos!</p>
                         <button onClick={initializeGame} className={styles.startButton}>Jogar Novamente</button>
                     </div>

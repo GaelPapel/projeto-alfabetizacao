@@ -124,10 +124,10 @@ const FeatureDescription = styled.p`
 function HomePage() {
     const introText1 = "Sua jornada para o conhecimento começa aqui. Nosso aplicativo foi criado para tornar o aprendizado da leitura e escrita uma experiência divertida, acessível e engajadora.";
     const introText2 = "Explore nossos recursos interativos, jogue, aprenda novas palavras e conecte-se com nossa comunidade. Estamos aqui para apoiá-lo em cada passo do caminho.";
-    const feature1Text = "Expanda seu vocabulário diariamente! Descubra novas palavras, suas pronúncias, significados e exemplos de uso em frases. Uma maneira simples e eficaz de aprender algo novo todos os dias.";
-    const feature2Text = "Aprender brincando é mais divertido! Nossos jogos interativos, como caça-palavras e jogo da memória, são projetados para fixar o conhecimento de forma lúdica e estimulante.";
-    const feature3Text = "Conecte-se com uma comunidade vibrante de estudantes e educadores. Compartilhe suas dúvidas, ajude outras pessoas e troque experiências para enriquecer seu aprendizado.";
-    const feature4Text = "..."; // Texto para "Alguma coisa"
+    const feature1Text = "Expanda seu vocabulário diariamente! Descubra novas palavras.";
+    const feature2Text = "Aprender brincando é mais divertido! ";
+    const feature3Text = "Conecte-se com uma comunidade vibrante de estudantes e educadores. Compartilhe suas dúvidas!";
+    const feature4Text = "Apresenta a missão, os valores e a equipe por trás do Projeto Alfabetização, destacando nosso compromisso com a educação."; 
 
     return (
         <AppLayout> {/* <<<<< ENVOLVENDO A PÁGINA COM O LAYOUT */}
@@ -143,12 +143,6 @@ function HomePage() {
                         <TextWithButton> {/* NOVO WRAPPER */}
                             {introText1}
                             <ReadTextButton text={introText1} />
-                        </TextWithButton>
-                    </Paragraph>
-                    <Paragraph>
-                        <TextWithButton> {/* NOVO WRAPPER */}
-                            {introText2}
-                            <ReadTextButton text={introText2} />
                         </TextWithButton>
                     </Paragraph>
                 </Section>
@@ -206,8 +200,8 @@ function HomePage() {
                         <FeatureCard>
                             <FeatureTitle>
                                 <TextWithButton> {/* NOVO WRAPPER */}
-                                    Alguma coisa
-                                    <ReadTextButton text="Alguma coisa" />
+                                    Quem somos
+                                    <ReadTextButton text="Quem somos" />
                                 </TextWithButton>
                             </FeatureTitle>
                             <FeatureDescription>

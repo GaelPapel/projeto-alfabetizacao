@@ -20,7 +20,7 @@ function Sidebar() {
 
   return (
     <aside className={styles.sidebarContainer}>
-      <h2 className={styles.sidebarHeader}> Menu </h2>
+      <h2 className={styles.sidebarHeader}>⋆⁺₊⋆ ☀︎ ⋆⁺₊⋆ </h2>
       <ul className={styles.navList}>
         <li className={styles.navItem}>
           {/* Use o Link do Inertia.js */}
@@ -63,6 +63,7 @@ function Sidebar() {
           </Link>
         </li>
       </ul>
+      <h2 className={styles.sidebarHeader}> ⋆⁺₊⋆ ☾⋆⁺₊⋆ </h2>
     </aside>
   );
 }

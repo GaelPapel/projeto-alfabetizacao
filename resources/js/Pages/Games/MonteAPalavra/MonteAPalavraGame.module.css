@@ -2,91 +2,83 @@
 
 .gameContainer {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start; /* Alinha ao topo para deixar espaço para o cabeçalho/rodapé */
-    min-height: 100vh;
-    background: linear-gradient(to bottom right, #f7d9a1, #f2c78a); /* Gradiente suave */
-    padding: 30px 20px;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif; /* Uma fonte mais moderna */
-    color: #4a4a4a;
-    overflow-x: hidden; /* Evita scroll horizontal */
-}
-
-.header {
-    width: 100%;
-    max-width: 900px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-    padding: 15px 25px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-}
-
-.title {
-    font-size: 2.5em;
-    color: #8B4513; /* Terra Cotta */
-    font-weight: 700;
-    margin: 0;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
-}
-
-.scoreDisplay {
-    font-size: 1.8em;
-    font-weight: 600;
-    color: #28a745; /* Verde vibrante */
+    justify-content: center; /* Centraliza o card do jogo */
+    align-items: center; /* Centraliza verticalmente o card */
+    min-height: 100%; /* Garante que o container ocupe toda a altura disponível do 'pageContent' */
+    width: 100%; /* Garante que o container ocupe toda a largura disponível do 'pageContent' */
+    padding: 10px; /* Padding menor para dar mais espaço ao conteúdo */
+    box-sizing: border-box; /* Inclui padding na largura e altura total */
+    overflow: hidden; /* **Importante**: Esconde qualquer overflow, especialmente horizontal */
 }
 
 .gameCard {
-    background-color: #FFFFFF;
-    padding: 40px 60px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px; /* Reduzir um pouco o padding interno */
+    max-width: 600px; /* Diminuir a largura máxima do card */
+    width: 98%; /* Quase toda a largura disponível, com uma pequena margem */
     text-align: center;
-    max-width: 900px;
-    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    animation: fadeInScale 0.8s ease-out;
-    position: relative; /* Para a bolha de feedback */
+    gap: 15px; /* Reduzir espaçamento entre elementos internos */
+    box-sizing: border-box;
+    overflow: hidden; /* Previne que o conteúdo do card transborde */
 }
 
-/* Animação de entrada do card */
-@keyframes fadeInScale {
-    from { opacity: 0; transform: scale(0.95) translateY(20px); }
-    to { opacity: 1; transform: scale(1) translateY(0); }
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px; /* Reduzir espaçamento abaixo */
+    flex-wrap: wrap; /* Permite quebrar linha em telas muito pequenas */
+    gap: 10px; /* Espaçamento entre os itens do header em wrap */
+}
+
+.title {
+    font-size: 2em; /* Reduzir um pouco o tamanho da fonte */
+    color: #4CAF50;
+    margin: 0;
+    flex-grow: 1; /* Permite que o título ocupe o espaço */
+    text-align: left;
+    min-width: 150px; /* Largura mínima para o título não sumir */
+}
+
+.scoreDisplay {
+    font-size: 1.3em; /* Reduzir o tamanho da fonte */
+    color: #333;
+    font-weight: bold;
+    background-color: #e0e0e0;
+    padding: 6px 12px; /* Reduzir padding */
+    border-radius: 20px;
+    white-space: nowrap; /* Evita que o texto "Pontos: 0" quebre */
 }
 
 .gameInstruction {
-    font-size: 1.6em;
-    color: #6a6a6a;
-    margin-bottom: 15px;
-    font-weight: 500;
+    font-size: 1.1em; /* Reduzir o tamanho da fonte */
+    color: #555;
+    margin-bottom: 10px;
 }
 
 .questionSection {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
+    gap: 10px; /* Reduzir espaçamento */
+    margin-bottom: 15px;
 }
 
 .questionImage {
-    max-width: 300px;
-    max-height: 250px;
-    width: 100%;
-    object-fit: contain;
-    border-radius: 15px;
-    border: 5px solid #FFDDC1; /* Borda suave */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    max-width: 95%; /* Garante que a imagem se ajuste ao card, com margem */
+    height: auto;
+    max-height: 200px; /* Altura máxima para imagens, evita imagens gigantes */
+    object-fit: contain; /* Redimensiona a imagem para caber na caixa sem cortar */
+    border: 3px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
 }
 
 .questionImage:hover {
@@ -94,305 +86,237 @@
 }
 
 .targetWordDisplay {
-    font-size: 3.5em;
-    font-weight: bold;
-    color: #4CAF50; /* Verde vibrante para a palavra sendo montada */
-    letter-spacing: 3px;
-    min-height: 1.5em; /* Garante que a área não encolha */
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
+    flex-wrap: wrap; /* Permite que as letras quebrem para a próxima linha */
+    gap: 6px; /* Reduzir espaçamento entre as letras */
+    margin-bottom: 20px;
 }
 
 .targetWordLetter {
-    display: inline-flex;
+    background-color: #f0f0f0;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    width: 45px; /* Reduzir largura dos slots */
+    height: 55px; /* Reduzir altura dos slots */
+    display: flex;
     justify-content: center;
     align-items: center;
-    width: 0.9em; /* Largura para cada letra */
-    height: 1.2em;
-    border-bottom: 3px solid #4CAF50; /* Sublinhado para as letras */
-    margin: 0 2px;
+    font-size: 1.6em; /* Reduzir tamanho da fonte */
+    font-weight: bold;
+    color: #333;
+    transition: all 0.2s ease-in-out;
+    box-sizing: border-box;
+    cursor: default;
 }
 
 .targetWordLetter.filled {
-    border-bottom-color: transparent; /* Remove o sublinhado se preenchido */
+    background-color: #e6ffe6;
+    border-color: #4CAF50;
+    cursor: pointer;
 }
-
 
 .syllableBank {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
-    max-width: 800px;
+    flex-wrap: wrap; /* Permite que as sílabas quebrem linha */
+    gap: 8px; /* Reduzir espaçamento entre sílabas */
+    margin-bottom: 20px;
 }
 
 .syllableChip {
-    background-color: #FFECB3; /* Amarelo claro para as sílabas */
-    color: #D2691E; /* Cor do texto da sílaba */
-    padding: 15px 25px;
+    background-color: #FFC107;
+    color: #333;
+    padding: 10px 15px; /* Reduzir padding */
+    border: none;
     border-radius: 10px;
-    font-size: 1.8em;
-    font-weight: 600;
-    cursor: grab;
-    transition: all 0.2s ease;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-    user-select: none; /* Não permite selecionar o texto */
-    border: 2px solid #FFDDC1;
+    font-size: 1.3em; /* Reduzir tamanho da fonte */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    min-width: 50px; /* Largura mínima para o chip */
+    box-sizing: border-box;
 }
 
-.syllableChip:hover {
-    background-color: #FFE082;
-    transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+.syllableChip:not(:disabled):hover {
+    background-color: #e0a800;
+    transform: translateY(-2px);
 }
 
-.syllableChip.selected {
-    background-color: #A5D6A7; /* Verde claro quando selecionado */
-    color: #2E7D32;
-    cursor: grabbing;
-    border-color: #81C784;
+.syllableChip:disabled {
+    background-color: #cccccc;
+    color: #888888;
+    cursor: not-allowed;
+    opacity: 0.7;
 }
 
 .syllableChip.used {
-    opacity: 0.5;
-    cursor: not-allowed;
-    background-color: #EEEEEE;
-    color: #AAAAAA;
+    background-color: #f0f0f0;
+    color: #aaaaaa;
+    border: 1px solid #e0e0e0;
+    pointer-events: none;
     box-shadow: none;
-    transform: none;
+    opacity: 0.8;
 }
 
 .buttonsContainer {
     display: flex;
-    gap: 20px;
-    margin-top: 30px;
-    flex-wrap: wrap;
     justify-content: center;
+    gap: 15px; /* Reduzir espaçamento entre botões */
+    margin-top: 15px;
+    flex-wrap: wrap; /* Permite quebrar linha */
 }
 
 .actionButton {
-    padding: 15px 35px;
+    padding: 10px 20px; /* Reduzir padding */
     border: none;
-    border-radius: 10px;
-    font-size: 1.3em;
-    font-weight: 600;
+    border-radius: 8px;
+    font-size: 1.1em; /* Reduzir tamanho da fonte */
+    font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     gap: 8px;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-.actionButton.primary {
-    background-color: #007BFF; /* Azul */
-    color: #FFFFFF;
-}
-
-.actionButton.primary:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
-}
-
-.actionButton.secondary {
-    background-color: #6C757D; /* Cinza */
-    color: #FFFFFF;
-}
-
-.actionButton.secondary:hover {
-    background-color: #5A6268;
-    transform: translateY(-2px);
-}
-
-.actionButton.success {
-    background-color: #28A745; /* Verde */
-    color: #FFFFFF;
-}
-
-.actionButton.success:hover {
-    background-color: #218838;
-}
-
-.actionButton.danger {
-    background-color: #DC3545; /* Vermelho */
-    color: #FFFFFF;
-}
-
-.actionButton.danger:hover {
-    background-color: #C82333;
-}
+.actionButton.primary { background-color: #007bff; color: white; }
+.actionButton.primary:hover:not(:disabled) { background-color: #0056b3; transform: translateY(-2px); }
+.actionButton.success { background-color: #28a745; color: white; }
+.actionButton.success:hover:not(:disabled) { background-color: #218838; transform: translateY(-2px); }
+.actionButton.secondary { background-color: #6c757d; color: white; }
+.actionButton.secondary:hover:not(:disabled) { background-color: #5a6268; transform: translateY(-2px); }
 
 .actionButton:disabled {
-    background-color: #E0E0E0;
-    color: #A0A0A0;
+    background-color: #cccccc;
     cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
     opacity: 0.7;
+    box-shadow: none;
 }
 
 .feedbackBubble {
-    position: absolute;
-    bottom: -60px; /* Posição abaixo do card */
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #f8f8f8;
-    padding: 12px 25px;
-    border-radius: 30px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    font-size: 1.4em;
+    padding: 12px 20px; /* Reduzir padding */
+    border-radius: 10px;
+    font-size: 1em; /* Reduzir tamanho da fonte */
     font-weight: bold;
-    color: #333;
-    animation: slideInUp 0.5s ease-out;
-    white-space: nowrap; /* Impede quebra de linha */
-    z-index: 10;
+    margin-top: 15px;
+    animation: fadeIn 0.3s ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
-.feedbackBubble.correct {
-    background-color: #E6FFED;
-    color: #28a745;
-    border: 2px solid #28a745;
-}
-
+.feedbackBubble.correct { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
 .feedbackBubble.incorrect {
-    background-color: #FFE6E6;
-    color: #DC3545;
-    border: 2px solid #DC3545;
-    animation: slideInUp 0.5s ease-out, shake 0.5s ease-in-out; /* Adiciona shake para erro */
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
 }
 
-@keyframes slideInUp {
-    from { opacity: 0; transform: translateX(-50%) translateY(20px); }
-    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes shake {
-    0%, 100% { transform: translateX(-50%) translateX(0); }
-    10%, 30%, 50%, 70%, 90% { transform: translateX(-50%) translateX(-5px); }
-    20%, 40%, 60%, 80% { transform: translateX(-50%) translateX(5px); }
+    10%, 90% { transform: translate3d(-1px, 0, 0); }
+    20%, 80% { transform: translate3d(2px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+    40%, 60% { transform: translate3d(4px, 0, 0); }
 }
 
-/* Telas de Fim de Jogo/Carregamento */
-.endGameScreen, .loadingScreen {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    font-size: 2em;
-    color: #8B4513;
-    gap: 30px;
+.gameCardShake {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
 }
 
-.endGameScreen h2 {
-    font-size: 3em;
-    color: #007BFF;
-}
 
-.endGameScreen p {
-    font-size: 1.5em;
-    color: #6a6a6a;
-}
-
-.footer {
-    margin-top: 40px;
-    font-size: 0.9em;
-    color: rgba(0,0,0,0.5);
-    text-align: center;
-}
-
-/* Media Queries para responsividade */
+/* Media Queries para responsividade mais agressiva */
 @media (max-width: 768px) {
-    .header {
-        flex-direction: column;
+    .gameCard {
+        padding: 15px;
+        max-width: 98%; /* Garante que ocupe quase toda a largura */
         gap: 10px;
-        margin-bottom: 20px;
-        padding: 10px 20px;
     }
+
     .title {
-        font-size: 2em;
+        font-size: 1.6em;
+        text-align: center; /* Centraliza o título em telas menores */
     }
     .scoreDisplay {
-        font-size: 1.5em;
-    }
-    .gameCard {
-        padding: 30px;
-        gap: 20px;
+        font-size: 1.1em;
     }
     .gameInstruction {
-        font-size: 1.3em;
+        font-size: 0.95em;
     }
     .questionImage {
-        max-width: 250px;
-        max-height: 200px;
+        max-height: 180px; /* Reduz altura máxima da imagem */
     }
-    .targetWordDisplay {
-        font-size: 2.8em;
+    .targetWordLetter {
+        width: 40px;
+        height: 50px;
+        font-size: 1.4em;
     }
     .syllableChip {
-        font-size: 1.5em;
-        padding: 12px 20px;
+        padding: 8px 12px;
+        font-size: 1.1em;
+        min-width: 40px;
     }
     .actionButton {
-        font-size: 1.1em;
-        padding: 12px 25px;
+        padding: 8px 18px;
+        font-size: 1em;
     }
-    .feedbackBubble {
-        font-size: 1.2em;
-        bottom: -50px;
+    .header {
+        flex-direction: column; /* Coloca título e score um abaixo do outro */
+        gap: 8px;
     }
 }
 
 @media (max-width: 480px) {
     .gameContainer {
-        padding: 15px;
-    }
-    .header {
-        padding: 10px 15px;
-    }
-    .title {
-        font-size: 1.8em;
-    }
-    .scoreDisplay {
-        font-size: 1.3em;
+        padding: 5px; /* Padding mínimo */
     }
     .gameCard {
-        padding: 20px;
-        gap: 15px;
+        padding: 10px;
+        gap: 8px;
+    }
+    .title {
+        font-size: 1.4em;
+    }
+    .scoreDisplay {
+        font-size: 1em;
     }
     .gameInstruction {
-        font-size: 1.1em;
+        font-size: 0.9em;
     }
     .questionImage {
-        max-width: 180px;
-        max-height: 150px;
+        max-height: 150px; /* Altura máxima ainda menor */
     }
-    .targetWordDisplay {
-        font-size: 2.2em;
-        gap: 5px;
+    .targetWordLetter {
+        width: 35px;
+        height: 45px;
+        font-size: 1.2em;
+        gap: 4px;
     }
     .syllableChip {
-        font-size: 1.2em;
-        padding: 10px 18px;
+        padding: 6px 10px;
+        font-size: 1em;
+        min-width: unset; /* Permite que o chip seja menor se necessário */
+    }
+    .buttonsContainer {
+        flex-direction: column; /* Botões empilhados em telas muito pequenas */
+        gap: 10px;
     }
     .actionButton {
-        font-size: 1em;
-        padding: 10px 20px;
+        width: 100%; /* Botões ocupam toda a largura */
+        justify-content: center; /* Centraliza texto do botão */
     }
     .feedbackBubble {
-        font-size: 1em;
-        bottom: -40px;
-        padding: 10px 20px;
-    }
-    .endGameScreen h2 {
-        font-size: 2.5em;
-    }
-    .endGameScreen p {
-        font-size: 1.2em;
+        padding: 10px 15px;
+        font-size: 0.9em;
     }
 }

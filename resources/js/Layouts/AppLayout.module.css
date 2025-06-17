@@ -1,0 +1,220 @@
+/* resources/js/Layouts/AppLayout.module.css */
+
+/* Reset básico e garantia de altura/largura */
+html, body, #root { /* Se #root for o ID do elemento onde seu app React é montado */
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden; /* Previne rolagem horizontal em todo o documento */
+    box-sizing: border-box; /* Inclui padding e border na largura/altura total */
+}
+
+/* Container principal que envolve Sidebar e Main Content */
+.appWrapper {
+    display: flex; /* Faz com que Sidebar e mainContentArea fiquem lado a lado */
+    min-height: 100vh; /* Garante que ocupe toda a altura da tela */
+    width: 100%; /* Ocupa 100% da largura do pai */
+    overflow-x: hidden; /* Prevenção adicional */
+    background-color: #f0f2f5; /* Cor de fundo geral */
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+/* Área do Conteúdo Principal (tudo à direita da Sidebar) */
+.mainContentArea {
+    flex-grow: 1; /* Ocupa todo o espaço restante horizontalmente */
+    display: flex;
+    flex-direction: column; /* Organiza header, main e footer verticalmente */
+    min-height: 100vh; /* Garante que esta área ocupe a altura total */
+    box-sizing: border-box;
+    overflow-x: hidden; /* Previne rolagem horizontal dentro do conteúdo principal */
+
+    /* ***** AQUI ESTÁ A CHAVE DA INTERAÇÃO COM A SIDEBAR ***** */
+    /* Para telas grandes, onde a sidebar é fixa à esquerda */
+    margin-left: 250px; /* Empurra o conteúdo para a direita da sidebar de 250px */
+    width: calc(100% - 250px); /* Garante que a largura se ajuste */
+}
+
+/* Cabeçalho da área de conteúdo principal */
+.appHeader {
+    width: 100%; /* Ocupa toda a largura do mainContentArea */
+    padding: 20px 30px; /* Padding para o cabeçalho */
+    background-color: #ffffff; /* Fundo do cabeçalho */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.headerTitle {
+    margin: 0;
+    font-size: 2em;
+    color: #4CAF50; /* Cor do título */
+}
+
+.headerNav {
+    display: flex;
+    gap: 20px;
+}
+
+.navLink {
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+}
+
+.navLink:hover {
+    color: #4CAF50;
+}
+
+/* Área onde o conteúdo específico da página (ex: o jogo) será renderizado */
+.pageContent {
+    flex-grow: 1; /* Ocupa o espaço restante entre o header e o footer */
+    width: 100%; /* Ocupa 100% da largura do mainContentArea */
+    padding: 20px; /* Padding interno para o conteúdo da página */
+    box-sizing: border-box;
+    display: flex; /* Permite que o jogo/conteúdo se centralize ou ocupe espaço */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: flex-start; /* Alinha o conteúdo ao topo */
+    overflow-x: hidden; /* Previne rolagem horizontal para o conteúdo da página */
+}
+
+
+/* Rodapé */
+.appFooter {
+    width: 100%; /* Ocupa toda a largura do mainContentArea */
+    padding: 20px;
+    text-align: center;
+    background-color: #ffffff;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+    font-size: 0.9em;
+    color: #777;
+    box-sizing: border-box;
+    margin-top: auto; /* Garante que o footer fique no final se o conteúdo for curto */
+}
+
+.footerLinks {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.footerLink {
+    text-decoration: none;
+    color: #777;
+    transition: color 0.2s ease-in-out;
+}
+
+.footerLink:hover {
+    color: #4CAF50;
+}
+
+/* Mensagem de Feedback (se estiver dentro do layout) */
+.feedbackMessage {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: white;
+    z-index: 10000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: slideInFromTop 0.5s ease-out forwards;
+}
+
+.feedbackMessage.success {
+    background-color: #28a745;
+}
+
+.feedbackMessage.error {
+    background-color: #dc3545;
+}
+
+.feedbackMessage.info {
+    background-color: #007bff;
+}
+
+@keyframes slideInFromTop {
+    from {
+        transform: translate(-50%, -100%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+}
+
+
+/* Media Queries para responsividade */
+
+/* Para telas menores que 768px (tablets e celulares) */
+@media (max-width: 768px) {
+    .appWrapper {
+        flex-direction: column; /* Sidebar e Main Content empilhados verticalmente */
+    }
+
+    /* Ajustes para a Sidebar quando ela não é mais fixa */
+    /* Assumindo que seu Sidebar.jsx também tem um CSS Module,
+       você precisaria ajustar as media queries LÁ para mudar a posição para relative.
+       Porém, aqui no AppLayout, precisamos lidar com o mainContentArea. */
+    /* Se a Sidebar se tornar um elemento embutido no fluxo, o 'margin-left' do mainContentArea deve ser removido. */
+    .mainContentArea {
+        margin-left: 0; /* Remove o margin-left quando a sidebar não é fixa */
+        width: 100%; /* Ocupa a largura total */
+        padding: 15px; /* Ajusta o padding para telas menores */
+    }
+
+    .appHeader {
+        flex-direction: column; /* Título e navegação empilhados */
+        align-items: center;
+        gap: 10px;
+        padding: 15px 20px;
+    }
+
+    .headerTitle {
+        font-size: 1.8em;
+    }
+
+    .headerNav {
+        flex-wrap: wrap; /* Links de navegação podem quebrar linha */
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .pageContent {
+        padding: 15px;
+    }
+
+    .appFooter {
+        padding: 15px;
+        font-size: 0.8em;
+    }
+}
+
+/* Para telas ainda menores (celulares) */
+@media (max-width: 480px) {
+    .appHeader {
+        padding: 10px 15px;
+    }
+    .headerTitle {
+        font-size: 1.5em;
+    }
+    .pageContent {
+        padding: 10px;
+    }
+    .appFooter {
+        padding: 10px;
+        font-size: 0.7em;
+    }
+    .footerLinks {
+        flex-direction: column; /* Links do rodapé empilhados */
+        gap: 5px;
+    }
+}

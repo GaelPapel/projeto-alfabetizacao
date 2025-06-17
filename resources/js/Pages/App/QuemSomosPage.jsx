@@ -217,7 +217,7 @@ function QuemSomosPage() {
     const titleText = "Sobre o Projeto Alfabetização";
     const missionText = "Este é um trabalho desenvolvido para a UNA Cristiano Machado, com o foco em auxiliar na alfabetização de adultos, utilizando jogos interativos e métodos inclusivos. Nosso projeto se inspira profundamente nos princípios de Paulo Freire, buscando uma alfabetização que vá além da mera decodificação de palavras. Acreditamos na conexão do aprendizado à realidade e às experiências de vida dos alunos. Nossa abordagem se baseia na utilização de temas geradores relevantes para o cotidiano dos adultos, promovendo o diálogo, a reflexão crítica e a valorização do seu conhecimento prévio.";
     const visionText = "Nossa visão é ser uma plataforma de referência na alfabetização de adultos, transformando vidas através da educação e da tecnologia. Queremos capacitar indivíduos, abrir portas para novas oportunidades e promover a inclusão social.";
-    const valuesText = "Nossos valores fundamentais são: Inovação, Inclusão, Colaboração, Respeito, Ética e Comprometimento com a transformação social através da educação.";
+    const valuesText = "Nosso trabalho é guiado pelos princípios do educador Paulo Freire, que defende uma alfabetização crítica e libertadora. Em vez de métodos tradicionais, usamos situações do cotidiano dos aprendizes para construir o conhecimento de forma participativa, respeitando sua cultura, vivências e saberes. Para Freire, educar é um ato político que deve formar sujeitos conscientes e protagonistas da própria história.";
 
     const objectives = [
         {
@@ -235,11 +235,7 @@ function QuemSomosPage() {
             title: "Estimular a Autonomia",
             description: "Incentivar a curiosidade, a reflexão e a capacidade de aprender continuamente.",
         },
-        {
-            icon: <FaUsers />,
-            title: "Promover a Inclusão",
-            description: "Utilizar métodos inclusivos para atender às diversas necessidades dos alunos.",
-        },
+        
     ];
 
     const technologies = [
@@ -247,8 +243,8 @@ function QuemSomosPage() {
     ];
 
     const teamMembers = [
-        { name: "Gabriel Freitas", role: "Desenvolvedor Frontend" },
-        { name: "Emerson Pedrosa", role: "Desenvolvedor Backend" },
+        { name: "Gabriel Freitas", role: "Desenvolvedor" },
+        { name: "Emerson Pedrosa", role: "Desenvolvedor" },
         { name: "Gabriel Haziel", role: "Colaborador" },
         { name: "Artur Camargos", role: "Colaborador" },
         { name: "Bernardo Araujo", role: "Colaborador" },
@@ -259,7 +255,7 @@ function QuemSomosPage() {
             <PageContainer>
                 <Section>
                     <Title>
-                        <StyledLogoImage src="/imagens/novo-logo.png" alt="Logo do Projeto Alfabetização" />
+                        <StyledLogoImage src="/assets/images/novo-logo.png" alt="Logo do Projeto Alfabetização" />
                         <span>{titleText}</span>
                         <ReadTextButton text={titleText} />
                     </Title>
@@ -327,9 +323,6 @@ function QuemSomosPage() {
                         <ReadTextButton text={valuesText} />
                     </TextWithButtonContainer>
                 </Section>
-
-                {/* REMOVIDO: O footer agora é provido pelo AppLayout */}
-                {/* <Footer>© 2025 Projeto Alfabetização. Todos os direitos reservados.</Footer> */}
             </PageContainer>
         </AppLayout>
     );
