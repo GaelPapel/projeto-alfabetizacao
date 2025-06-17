@@ -1,0 +1,181 @@
+/* resources/js/Pages/App/PalavrasPage.module.css */
+
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 100px);
+    background-color: #F8F9FA; /* Colors.bgLight */
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.gameCard {
+    background-color: #FFFFFF; /* Colors.bgWhite */
+    padding: 60px;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 850px;
+    width: 95%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 450px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Para o feedback: */
+.gameCardCorrect {
+    background-color: #E6FFE6; /* Colors.softGreen */
+}
+
+.gameCardIncorrect {
+    background-color: #FFEDED; /* Colors.softRed */
+    animation: shake 0.5s ease-in-out;
+}
+
+/* Defina as keyframes diretamente no CSS */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.gameInstruction {
+    font-size: 1.6em;
+    color: #333333; /* Colors.textDark */
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.questionDisplay {
+    font-size: 4em;
+    color: #8B4513; /* Colors.primary */
+    margin-bottom: 40px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.gameInputGroup {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.gameInput {
+    padding: 18px 25px;
+    border: 3px solid #CCCCCC; /* Colors.inputBorder */
+    border-radius: 10px;
+    font-size: 1.3em;
+    width: 70%;
+    max-width: 350px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gameInput:focus {
+    border-color: #D2691E; /* Colors.secondary */
+    box-shadow: 0 0 0 4px rgba(210, 105, 30, 0.2);
+}
+
+.gameButton {
+    padding: 18px 40px;
+    background-color: #2196F3; /* Colors.buttonBg */
+    color: #FFFFFF; /* Colors.bgWhite */
+    border: none;
+    border-radius: 10px;
+    font-size: 1.3em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    min-width: 150px;
+}
+
+.gameButton:hover {
+    background-color: #1976D2; /* Colors.buttonHover */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.gameButton:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.gameButton:disabled {
+    background-color: #CCCCCC; /* Colors.inputBorder */
+    cursor: not-allowed;
+    opacity: 0.7;
+    transform: none;
+    box-shadow: none;
+}
+
+.gameFeedbackMessage {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 25px;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.gameFeedbackMessageCorrect {
+    color: #4CAF50; /* Colors.correct */
+}
+
+.gameFeedbackMessageIncorrect {
+    color: #F44336; /* Colors.incorrect */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.scoreDisplay {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333333; /* Colors.textDark */
+}
+
+.footer {
+    margin-top: 50px;
+    font-size: 0.9em;
+    color: #555555; /* Colors.textMedium */
+    text-align: center;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .gameCard {
+        padding: 30px;
+        min-height: 400px;
+    }
+    .questionDisplay {
+        font-size: 2.8em;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .gameInputGroup {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .gameInput {
+        width: 90%;
+        font-size: 1.1em;
+    }
+}

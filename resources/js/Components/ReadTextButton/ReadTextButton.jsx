@@ -1,7 +1,9 @@
-// src/components/ReadTextButton/ReadTextButton.js
+// resources/js/Components/ReadTextButton/ReadTextButton.jsx
 import React from 'react';
-import useTextToSpeech from '../../hooks/useTextToSpeech'; // Caminho para o hook
-import './ReadTextButton.css'; // Estilos para o botão
+import useTextToSpeech from '@/hooks/useTextToSpeech';
+import './ReadTextButton.css';
+// Importe os ícones que deseja usar. Ex: MdVolumeUp, MdPause, MdStop do Material Design Icons
+import { MdVolumeUp, MdPause, MdStop } from 'react-icons/md';
 
 const ReadTextButton = ({ text, lang = 'pt-BR' }) => {
   const { speak, pause, resume, stop, isSpeaking, isPaused } = useTextToSpeech();
@@ -10,10 +12,8 @@ const ReadTextButton = ({ text, lang = 'pt-BR' }) => {
     if (isPaused) {
       resume();
     } else if (isSpeaking) {
-      // Se já estiver falando, pausa a leitura atual para retomar mais tarde
-      pause(); 
+      pause();
     } else {
-      // Se não estiver falando, inicia a leitura
       speak(text, lang);
     }
   };
@@ -30,13 +30,14 @@ const ReadTextButton = ({ text, lang = 'pt-BR' }) => {
         title={isPaused ? "Retomar leitura" : (isSpeaking ? "Pausar leitura" : "Ouvir texto")}
         aria-label={isPaused ? "Retomar leitura" : (isSpeaking ? "Pausar leitura" : "Ouvir texto")}
       >
-        {isSpeaking && !isPaused ? (
-          <span className="icon">❚❚</span> // Ícone de pausa
-        ) : (
-          <span className="icon" style={{ color: 'green' }}>🔊</span> // Ícone de som verde
-        )}
+        <span className="icon">
+          {isSpeaking && !isPaused ? (
+            <MdPause /> // Ícone de pausa
+          ) : (
+            <MdVolumeUp /> // Ícone de som
+          )}
+        </span>
       </button>
-      {/* Mostra o botão de parar apenas se estiver falando ou pausado */}
       {(isSpeaking || isPaused) && ( 
         <button
           onClick={handleStopClick}
@@ -44,7 +45,9 @@ const ReadTextButton = ({ text, lang = 'pt-BR' }) => {
           title="Parar leitura"
           aria-label="Parar leitura"
         >
-          <span className="icon">■</span> {/* Ícone de parar */}
+          <span className="icon">
+            <MdStop /> {/* Ícone de parar */}
+          </span>
         </button>
       )}
     </div>
