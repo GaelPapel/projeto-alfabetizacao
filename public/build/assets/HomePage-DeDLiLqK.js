@@ -1,4 +1,4 @@
-import{j as e}from"./app-Cv2p_eYH.js";import{d as a}from"./styled-components.browser.esm-DZRar_If.js";import{R as o}from"./ReadTextButton-q3n4hmCN.js";import{A as h}from"./AppLayout-D0iBk3W4.js";const s=a.span`
+import{j as e}from"./app-DdmJdZgC.js";import{d as a}from"./styled-components.browser.esm-CwFy9ndy.js";import{R as o}from"./ReadTextButton-l-CEnWgp.js";import{A as h}from"./AppLayout-XFxKGA60.js";const s=a.span`
     display: flex;
     align-items: center;
     gap: 10px; /* Espaçamento entre o texto e o botão */

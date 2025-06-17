@@ -1,4 +1,4 @@
-import{j as e,Y as l}from"./app-Cv2p_eYH.js";import{d as o}from"./styled-components.browser.esm-DZRar_If.js";import{A as p,a as u,b as g}from"./AppLayout-D0iBk3W4.js";import{R as t}from"./ReadTextButton-q3n4hmCN.js";const h=o.div`
+import{j as e,Y as l}from"./app-DdmJdZgC.js";import{d as o}from"./styled-components.browser.esm-CwFy9ndy.js";import{A as p,a as g,b as u}from"./AppLayout-XFxKGA60.js";import{R as t}from"./ReadTextButton-l-CEnWgp.js";const h=o.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -47,7 +47,7 @@ import{j as e,Y as l}from"./app-Cv2p_eYH.js";import{d as o}from"./styled-compone
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
     margin-top: 30px;
-`,d=o(l)` // <<<<< Mudança aqui para usar o Link do Inertia
+`,d=o(l)`
     background-color: #f0f2f5;
     padding: 25px;
     border-radius: 10px;
@@ -85,4 +85,4 @@ import{j as e,Y as l}from"./app-Cv2p_eYH.js";import{d as o}from"./styled-compone
     font-size: 1em;
     color: #555555;
     line-height: 1.6;
-`;function B(){const r="Jogos Educativos",i="Bem-vindo à nossa seção de jogos! Aqui você encontrará diversas atividades lúdicas para praticar a leitura e a escrita de forma interativa e divertida. Clique em um jogo para começar!",n="Nossos Jogos Disponíveis";return e.jsxs(p,{children:[" ",e.jsxs(h,{children:[e.jsxs(s,{children:[e.jsx(f,{children:e.jsxs(a,{children:[" ",r,e.jsx(t,{text:r})]})}),e.jsx(j,{children:e.jsxs(a,{children:[" ",i,e.jsx(t,{text:i})]})})]}),e.jsxs(s,{children:[e.jsx(b,{children:e.jsxs(a,{children:[" ",n,e.jsx(t,{text:n})]})}),e.jsxs(v,{children:[e.jsxs(d,{href:"/jogos/memoria",children:[" ",e.jsx(c,{children:e.jsx(u,{})}),e.jsxs(m,{children:["Jogo da Memória"," "]}),e.jsxs(x,{children:["Teste sua memória e identifique pares de palavras e imagens."," "]})]}),e.jsxs(d,{href:"/jogos/montapalavra",children:[" ",e.jsx(c,{children:e.jsx(g,{})}),e.jsxs(m,{children:["Desafio Visual"," "]}),e.jsxs(x,{children:["Acerte o nome de cada imagem"," "]})]})]})]})]})]})}export{B as default};
+`;function k(){const r="Jogos Educativos",i="Bem-vindo à nossa seção de jogos! Aqui você encontrará diversas atividades lúdicas para praticar a leitura e a escrita de forma interativa e divertida. Clique em um jogo para começar!",n="Nossos Jogos Disponíveis";return e.jsxs(p,{children:[" ",e.jsxs(h,{children:[e.jsxs(s,{children:[e.jsx(f,{children:e.jsxs(a,{children:[r,e.jsx(t,{text:r})]})}),e.jsx(j,{children:e.jsxs(a,{children:[i,e.jsx(t,{text:i})]})})]}),e.jsxs(s,{children:[e.jsx(b,{children:e.jsxs(a,{children:[n,e.jsx(t,{text:n})]})}),e.jsxs(v,{children:[e.jsxs(d,{href:"/jogos/memoria",children:[e.jsx(c,{children:e.jsx(g,{})}),e.jsx(m,{children:"Jogo da Memória"}),e.jsx(x,{children:"Teste sua memória e identifique pares de palavras e imagens."})]}),e.jsxs(d,{href:"/jogos/monte-a-palavra",children:[" ",e.jsx(c,{children:e.jsx(u,{})}),e.jsx(m,{children:"Desafio Visual"}),e.jsx(x,{children:"Acerte o nome de cada imagem"})]})]})]})]})]})}export{k as default};

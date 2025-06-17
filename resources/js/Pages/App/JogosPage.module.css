@@ -1,0 +1,217 @@
+/* resources/js/Pages/App/JogosPage.module.css */
+
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 50px 30px;
+    background-color: #F8F9FA;
+    border-radius: 12px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+    max-width: 1000px;
+    width: 95%;
+    margin: 40px auto;
+    color: #333333;
+}
+
+.section {
+    text-align: left;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.textWithReadButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.title {
+    color: #8B4513;
+    font-size: 3em;
+    margin-bottom: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.subtitle {
+    color: #D2691E;
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.paragraph {
+    font-size: 1.2em;
+    line-height: 1.9;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+.gamesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+/* Usaremos uma classe simples para o link do game card */
+.gameCardLink {
+    background-color: #f0f2f5;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.gameCardLink:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+    background-color: #e2e4e8;
+}
+
+/* Se ReadTextButton tiver estilos internos que dependem do container, remova-os e mova-os para o CSS do ReadTextButton */
+/* ReadTextButton geralmente é um componente auto-contido e não deveria ter estilos injetados de fora assim */
+/* Se precisar de margem, adicione na .gameCardLink ou na div que o contém */
+
+.gameIcon {
+    font-size: 3.5em;
+    color: #D2691E;
+    margin-bottom: 20px;
+}
+
+.gameTitle {
+    color: #8B4513;
+    font-size: 1.6em;
+    margin-bottom: 15px;
+}
+
+.gameDescription {
+    font-size: 1em;
+    color: #555555;
+    line-height: 1.6;
+}/* resources/js/Pages/App/JogosPage.module.css */
+
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 50px 30px;
+    background-color: #F8F9FA;
+    border-radius: 12px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+    max-width: 1000px;
+    width: 95%;
+    margin: 40px auto;
+    color: #333333;
+}
+
+.section {
+    text-align: left;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.textWithReadButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.title {
+    color: #8B4513;
+    font-size: 3em;
+    margin-bottom: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.subtitle {
+    color: #D2691E;
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.paragraph {
+    font-size: 1.2em;
+    line-height: 1.9;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+.gamesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+/* Usaremos uma classe simples para o link do game card */
+.gameCardLink {
+    background-color: #f0f2f5;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.gameCardLink:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+    background-color: #e2e4e8;
+}
+
+/* Se ReadTextButton tiver estilos internos que dependem do container, remova-os e mova-os para o CSS do ReadTextButton */
+/* ReadTextButton geralmente é um componente auto-contido e não deveria ter estilos injetados de fora assim */
+/* Se precisar de margem, adicione na .gameCardLink ou na div que o contém */
+
+.gameIcon {
+    font-size: 3.5em;
+    color: #D2691E;
+    margin-bottom: 20px;
+}
+
+.gameTitle {
+    color: #8B4513;
+    font-size: 1.6em;
+    margin-bottom: 15px;
+}
+
+.gameDescription {
+    font-size: 1em;
+    color: #555555;
+    line-height: 1.6;
+}

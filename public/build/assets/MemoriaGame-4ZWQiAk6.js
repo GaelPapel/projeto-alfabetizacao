@@ -1,1 +1,0 @@
-import{j as e}from"./app-Cv2p_eYH.js";function i(){return e.jsxs("div",{children:[e.jsx("h1",{children:"Bem-vindo ao Jogo da Memória!"}),e.jsx("p",{children:"Aqui você vai se divertir e aprender."})]})}export{i as default};

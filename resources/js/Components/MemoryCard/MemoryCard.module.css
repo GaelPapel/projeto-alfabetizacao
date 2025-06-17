@@ -1,0 +1,130 @@
+/* resources/js/Components/MemoryCard/MemoryCard.module.css */
+
+.cardOuter {
+    width: 180px;
+    height: 180px;
+    cursor: pointer;
+    /* position: relative; REMOVIDO: Não necessário se não há backface-visibility */
+    /* transform-style: preserve-3d; REMOVIDO: Não necessário se não há backface-visibility */
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Removido transform 0.6s cubic-bezier para rotação */
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    background-color: #fff; /* Fundo visível da carta, já que não há inner/outer 3D */
+    display: flex; /* Para centralizar o conteúdo */
+    justify-content: center;
+    align-items: center;
+    border: 4px solid #ffca28; /* Borda da frente da carta */
+    overflow: hidden; /* Garante que nada saia dos limites arredondados */
+}
+
+/* REMOVIDO: .cardOuter.flipped { transform: rotateY(180deg); } */
+
+.cardOuter.matched {
+    opacity: 0.6; /* Cartas combinadas ficam um pouco transparentes */
+    cursor: default;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transform: scale(0.95);
+    pointer-events: none; /* Impede novos cliques em cartas combinadas */
+    background-color: #d4edda; /* Cor para cartas combinadas */
+    border-color: #388e3c; /* Borda para cartas combinadas */
+}
+
+.cardOuter.selected {
+    box-shadow: 0 0 0 5px #00BCD4, 0 8px 25px rgba(0, 0, 0, 0.35); /* Borda turquesa e sombra mais forte */
+    transform: scale(1.05); /* Levemente maior */
+    z-index: 10; /* Garante que fique acima de outras cartas */
+}
+
+/* REMOVIDO: cardInner não é mais necessário para a rotação 3D.
+   O conteúdo estará diretamente dentro do cardOuter. */
+/* .cardInner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    border-radius: 15px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+} */
+
+/* REMOVIDO: cardBack não é mais necessário */
+/* .cardFront, .cardBack { ... } */
+
+.cardFront { /* Agora, .cardFront é o próprio conteúdo visível da carta */
+    width: 100%;
+    height: 100%;
+    /* Removido position: absolute, backface-visibility, e transform: rotateY(180deg); */
+    background: transparent; /* A cor de fundo será a do .cardOuter */
+    color: #795548;
+    /* Remover font-size aqui, ele será controlado pelo cardText */
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px; /* Manter padding, mas será ajustado pelo cardText */
+    box-sizing: border-box;
+}
+
+/* REMOVIDO: cardBack não é mais necessário */
+/* .cardBack { ... } */
+
+.cardImage {
+    /* Manter este estilo caso mude de ideia e volte para imagens, mas não será usado agora */
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.cardText {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.5em; /* <<<<<<<<< VALOR AJUSTADO AQUI */
+    word-break: break-word;
+    line-height: 1.2;
+    padding: 5px; /* Pequeno padding interno para o texto */
+    user-select: none; /* Impede seleção de texto */
+    color: inherit; /* Garante que a cor do texto venha do .cardFront */
+    /* Adicione estas para centralização e ajuste */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Para que o flexbox centralize verticalmente */
+    overflow: hidden; /* Se o texto for muito grande para a linha, ele será cortado */
+    text-overflow: ellipsis; /* Adiciona '...' se o texto for cortado */
+    white-space: normal; /* Permite quebras de linha normais */
+}
+
+/* REMOVIDO: backIcon não é mais necessário */
+/* .backIcon { ... } */
+
+/* Media Queries para Responsividade */
+@media (max-width: 1024px) {
+    .cardOuter {
+        width: 150px;
+        height: 150px;
+    }
+    .cardText {
+        font-size: 1.2em; /* Reduza aqui também para telas menores */
+    }
+}
+
+@media (max-width: 768px) {
+    .cardOuter {
+        width: 130px;
+        height: 130px;
+    }
+    .cardText {
+        font-size: 1em; /* Reduza aqui também */
+    }
+}
+
+@media (max-width: 480px) {
+    .cardOuter {
+        width: 110px;
+        height: 110px;
+    }
+    .cardText {
+        font-size: 0.8em; /* Reduza aqui também */
+    }
+}

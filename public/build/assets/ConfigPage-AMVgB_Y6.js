@@ -1,4 +1,4 @@
-import{j as e}from"./app-Cv2p_eYH.js";import{d as t}from"./styled-components.browser.esm-DZRar_If.js";import{A as c,F as l}from"./AppLayout-D0iBk3W4.js";import{R as a}from"./ReadTextButton-q3n4hmCN.js";const o={primary:"#8B4513",secondary:"#D2691E",textDark:"#333333",bgLight:"#F8F9FA",bgWhite:"#FFFFFF"},d=t.div`
+import{j as e}from"./app-DdmJdZgC.js";import{d as t}from"./styled-components.browser.esm-CwFy9ndy.js";import{A as c,F as l}from"./AppLayout-XFxKGA60.js";import{R as a}from"./ReadTextButton-l-CEnWgp.js";const o={primary:"#8B4513",secondary:"#D2691E",textDark:"#333333",bgLight:"#F8F9FA",bgWhite:"#FFFFFF"},d=t.div`
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -5,12 +5,12 @@ import styled from 'styled-components';
 import { FaBrain, FaEdit } from 'react-icons/fa';
 // ATENÇÃO: Mudança importante aqui!
 // import { Link } from 'react-router-dom'; // REMOVER ESTA LINHA
-import { Link } from '@inertiajs/react'; // <<<<< USAR O LINK DO INERTIA
+import { Link } from '@inertiajs/react'; // USAR O LINK DO INERTIA
 
 import ReadTextButton from '@/Components/ReadTextButton/ReadTextButton'; // IMPORTADO: ReadTextButton
 
 // IMPORTAR O AppLayout AQUI
-import AppLayout from '@/Layouts/AppLayout'; // <<<<< NOVA LINHA AQUI
+import AppLayout from '@/Layouts/AppLayout';
 
 // --- Styled Components para a JogosPage ---
 const PageContainer = styled.div`
@@ -78,7 +78,7 @@ const GamesGrid = styled.div`
 `;
 
 // ALTERADO: StyledGameCard agora é um StyledLink, e usará o Link do Inertia
-const StyledGameCard = styled(Link)` // <<<<< Mudança aqui para usar o Link do Inertia
+const StyledGameCard = styled(Link)`
     background-color: #f0f2f5;
     padding: 25px;
     border-radius: 10px;
@@ -136,17 +136,17 @@ function JogosPage() {
     const mountWordGameDescription = "Acerte o nome de cada imagem";
 
     return (
-        <AppLayout> {/* <<<<< ENVOLVENDO A PÁGINA COM O LAYOUT */}
+        <AppLayout> {/* ENVOLVENDO A PÁGINA COM O LAYOUT */}
             <PageContainer>
                 <Section>
                     <Title>
-                        <TextWithReadButton> {/* Mantido para o título da página */}
+                        <TextWithReadButton>
                             {titleText}
                             <ReadTextButton text={titleText} />
                         </TextWithReadButton>
                     </Title>
                     <Paragraph>
-                        <TextWithReadButton> {/* Mantido para o parágrafo introdutório */}
+                        <TextWithReadButton>
                             {introParagraphText}
                             <ReadTextButton text={introParagraphText} />
                         </TextWithReadButton>
@@ -155,33 +155,31 @@ function JogosPage() {
 
                 <Section>
                     <Subtitle>
-                        <TextWithReadButton> {/* Mantido para o subtítulo da seção */}
+                        <TextWithReadButton>
                             {subtitleText}
                             <ReadTextButton text={subtitleText} />
                         </TextWithReadButton>
                     </Subtitle>
                     <GamesGrid>
                         {/* Jogo da Memória como um Link do Inertia */}
-                        {/* O 'to' vira 'href' no Link do Inertia */}
-                        <StyledGameCard href="/jogos/memoria"> {/* <<<<< href AO INVÉS DE 'to' */}
+                        <StyledGameCard href="/jogos/memoria">
                             <GameIcon><FaBrain /></GameIcon>
                             <GameTitle>
-                                {memoryGameTitle} {/* Texto do título do jogo */}
+                                {memoryGameTitle}
                             </GameTitle>
                             <GameDescription>
-                                {memoryGameDescription} {/* Texto da descrição do jogo */}
+                                {memoryGameDescription}
                             </GameDescription>
                         </StyledGameCard>
 
-                        {/* Monte a Palavra como um Link do Inertia */}
-                        {/* O 'to' vira 'href' no Link do Inertia */}
-                        <StyledGameCard href="/jogos/montapalavra"> {/* <<<<< href AO INVÉS DE 'to' */}
+                        {/* Monte a Palavra como um Link do Inertia - CORRIGIDO O href */}
+                        <StyledGameCard href="/jogos/monte-a-palavra"> {/* CORRIGIDO AQUI */}
                             <GameIcon><FaEdit /></GameIcon>
                             <GameTitle>
-                                {mountWordGameTitle} {/* Texto do título do jogo */}
+                                {mountWordGameTitle}
                             </GameTitle>
                             <GameDescription>
-                                {mountWordGameDescription} {/* Texto da descrição do jogo */}
+                                {mountWordGameDescription}
                             </GameDescription>
                         </StyledGameCard>
 

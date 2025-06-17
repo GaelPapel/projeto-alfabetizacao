@@ -3,8 +3,8 @@
     "file": "assets/AppLayout-CSkLpjWK.css",
     "src": "_AppLayout-CSkLpjWK.css"
   },
-  "_AppLayout-D0iBk3W4.js": {
-    "file": "assets/AppLayout-D0iBk3W4.js",
+  "_AppLayout-XFxKGA60.js": {
+    "file": "assets/AppLayout-XFxKGA60.js",
     "name": "AppLayout",
     "imports": [
       "resources/js/app.jsx"
@@ -13,12 +13,12 @@
       "assets/AppLayout-CSkLpjWK.css"
     ]
   },
-  "_ReadTextButton-q3n4hmCN.js": {
-    "file": "assets/ReadTextButton-q3n4hmCN.js",
+  "_ReadTextButton-l-CEnWgp.js": {
+    "file": "assets/ReadTextButton-l-CEnWgp.js",
     "name": "ReadTextButton",
     "imports": [
       "resources/js/app.jsx",
-      "_AppLayout-D0iBk3W4.js"
+      "_AppLayout-XFxKGA60.js"
     ],
     "css": [
       "assets/ReadTextButton-zaN5YKYm.css"
@@ -28,111 +28,116 @@
     "file": "assets/ReadTextButton-zaN5YKYm.css",
     "src": "_ReadTextButton-zaN5YKYm.css"
   },
-  "_styled-components.browser.esm-DZRar_If.js": {
-    "file": "assets/styled-components.browser.esm-DZRar_If.js",
+  "_styled-components.browser.esm-CwFy9ndy.js": {
+    "file": "assets/styled-components.browser.esm-CwFy9ndy.js",
     "name": "styled-components.browser.esm",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
   "resources/js/Pages/App/ConfigPage.jsx": {
-    "file": "assets/ConfigPage-9STNrGYO.js",
+    "file": "assets/ConfigPage-AMVgB_Y6.js",
     "name": "ConfigPage",
     "src": "resources/js/Pages/App/ConfigPage.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_styled-components.browser.esm-DZRar_If.js",
-      "_AppLayout-D0iBk3W4.js",
-      "_ReadTextButton-q3n4hmCN.js"
+      "_styled-components.browser.esm-CwFy9ndy.js",
+      "_AppLayout-XFxKGA60.js",
+      "_ReadTextButton-l-CEnWgp.js"
     ]
   },
   "resources/js/Pages/App/ForumPage.jsx": {
-    "file": "assets/ForumPage-By0F-PYI.js",
+    "file": "assets/ForumPage-DREHXZFi.js",
     "name": "ForumPage",
     "src": "resources/js/Pages/App/ForumPage.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_styled-components.browser.esm-DZRar_If.js",
-      "_ReadTextButton-q3n4hmCN.js",
-      "_AppLayout-D0iBk3W4.js"
+      "_styled-components.browser.esm-CwFy9ndy.js",
+      "_ReadTextButton-l-CEnWgp.js",
+      "_AppLayout-XFxKGA60.js"
     ]
   },
   "resources/js/Pages/App/HomePage.jsx": {
-    "file": "assets/HomePage-HrhYK0xb.js",
+    "file": "assets/HomePage-DeDLiLqK.js",
     "name": "HomePage",
     "src": "resources/js/Pages/App/HomePage.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_styled-components.browser.esm-DZRar_If.js",
-      "_ReadTextButton-q3n4hmCN.js",
-      "_AppLayout-D0iBk3W4.js"
+      "_styled-components.browser.esm-CwFy9ndy.js",
+      "_ReadTextButton-l-CEnWgp.js",
+      "_AppLayout-XFxKGA60.js"
     ]
   },
   "resources/js/Pages/App/JogosPage.jsx": {
-    "file": "assets/JogosPage-C6XUtcKF.js",
+    "file": "assets/JogosPage-BvwqTFv0.js",
     "name": "JogosPage",
     "src": "resources/js/Pages/App/JogosPage.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_styled-components.browser.esm-DZRar_If.js",
-      "_AppLayout-D0iBk3W4.js",
-      "_ReadTextButton-q3n4hmCN.js"
+      "_styled-components.browser.esm-CwFy9ndy.js",
+      "_AppLayout-XFxKGA60.js",
+      "_ReadTextButton-l-CEnWgp.js"
     ]
   },
   "resources/js/Pages/App/PalavrasPage.jsx": {
-    "file": "assets/PalavrasPage-7jKascOF.js",
+    "file": "assets/PalavrasPage-BNHp2yut.js",
     "name": "PalavrasPage",
     "src": "resources/js/Pages/App/PalavrasPage.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_ReadTextButton-q3n4hmCN.js",
-      "_AppLayout-D0iBk3W4.js"
+      "_ReadTextButton-l-CEnWgp.js",
+      "_AppLayout-XFxKGA60.js"
     ],
     "css": [
       "assets/PalavrasPage-BxClzT-8.css"
     ]
   },
   "resources/js/Pages/App/QuemSomosPage.jsx": {
-    "file": "assets/QuemSomosPage-CGr5IZYO.js",
+    "file": "assets/QuemSomosPage-CP3-8MgV.js",
     "name": "QuemSomosPage",
     "src": "resources/js/Pages/App/QuemSomosPage.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_styled-components.browser.esm-DZRar_If.js",
-      "_AppLayout-D0iBk3W4.js",
-      "_ReadTextButton-q3n4hmCN.js"
+      "_styled-components.browser.esm-CwFy9ndy.js",
+      "_AppLayout-XFxKGA60.js",
+      "_ReadTextButton-l-CEnWgp.js"
     ]
   },
   "resources/js/Pages/Games/MemoriaGame/MemoriaGame.jsx": {
-    "file": "assets/MemoriaGame-4ZWQiAk6.js",
+    "file": "assets/MemoriaGame-C3W2beph.js",
     "name": "MemoriaGame",
     "src": "resources/js/Pages/Games/MemoriaGame/MemoriaGame.jsx",
     "isDynamicEntry": true,
     "imports": [
-      "resources/js/app.jsx"
+      "resources/js/app.jsx",
+      "_AppLayout-XFxKGA60.js"
+    ],
+    "css": [
+      "assets/MemoriaGame-xS9Vp5A7.css"
     ]
   },
   "resources/js/Pages/Games/MonteAPalavra/MonteAPalavraGame.jsx": {
-    "file": "assets/MonteAPalavraGame-BhSNtmNc.js",
+    "file": "assets/MonteAPalavraGame-CqU9hXfU.js",
     "name": "MonteAPalavraGame",
     "src": "resources/js/Pages/Games/MonteAPalavra/MonteAPalavraGame.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_AppLayout-D0iBk3W4.js"
+      "_AppLayout-XFxKGA60.js",
+      "_ReadTextButton-l-CEnWgp.js"
     ],
     "css": [
       "assets/MonteAPalavraGame-O2gHAWNT.css"
     ]
   },
   "resources/js/app.jsx": {
-    "file": "assets/app-Cv2p_eYH.js",
+    "file": "assets/app-DdmJdZgC.js",
     "name": "app",
     "src": "resources/js/app.jsx",
     "isEntry": true,

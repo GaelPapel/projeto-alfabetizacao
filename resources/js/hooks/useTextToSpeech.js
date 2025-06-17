@@ -1,87 +1,121 @@
-// src/hooks/useTextToSpeech.js
-import { useState, useEffect, useRef } from 'react';
+// resources/js/hooks/useTextToSpeech.js
+
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 const useTextToSpeech = () => {
-  const [isSpeaking, setIsSpeaking] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
-  const utteranceRef = useRef(null); // Ref para o objeto SpeechSynthesisUtterance
+    const [isSpeaking, setIsSpeaking] = useState(false);
+    const [isPaused, setIsPaused] = useState(false);
+    // Usamos useRef para o SpeechSynthesis, que é a interface principal
+    // e o SpeechSynthesisUtterance, que representa o texto a ser falado.
+    const synthRef = useRef(null);
+    const utteranceRef = useRef(null); // Para manter a referência da Utterance atual
 
-  // Inicializa o SpeechSynthesisUtterance
-  const initSpeechSynthesis = (text, lang = 'pt-BR') => {
-    if (!('speechSynthesis' in window)) {
-      console.error('API de Síntese de Fala não suportada neste navegador.');
-      return null;
-    }
+    // Inicializa o SpeechSynthesis API uma vez quando o componente é montado
+    useEffect(() => {
+        if (window.speechSynthesis) {
+            synthRef.current = window.speechSynthesis;
 
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = lang; // Define o idioma, crucial para a pronúncia correta
+            // Pré-carrega vozes. É bom fazer isso no início, pois getVoices() pode ser assíncrono
+            // ou retornar uma lista vazia na primeira vez em alguns navegadores.
+            // Adiciona um listener para quando as vozes estiverem disponíveis.
+            synthRef.current.onvoiceschanged = () => {
+                // console.log("Vozes carregadas ou alteradas.");
+            };
 
-    // Eventos para controlar o estado da reprodução
-    utterance.onstart = () => setIsSpeaking(true);
-    utterance.onend = () => {
-      setIsSpeaking(false);
-      setIsPaused(false);
-    };
-    utterance.onerror = (event) => {
-      console.error('Erro na síntese de fala:', event.error);
-      setIsSpeaking(false);
-      setIsPaused(false);
-    };
+        } else {
+            console.warn("API de Síntese de Fala não suportada neste navegador.");
+        }
+    }, []);
 
-    utteranceRef.current = utterance; // Armazena a instância para controle
-    return utterance;
-  };
+    const speak = useCallback((text, lang = 'pt-BR', volume = 1, rate = 1, pitch = 1) => {
+        if (!synthRef.current) {
+            console.warn("SpeechSynthesis não está disponível.");
+            return;
+        }
 
-  // Função para ler o texto
-  const speak = (text, lang = 'pt-BR') => {
-    // Cancela qualquer fala anterior antes de iniciar uma nova
-    if (window.speechSynthesis.speaking) {
-      window.speechSynthesis.cancel();
-      setIsSpeaking(false);
-      setIsPaused(false);
-    }
+        // Cancela qualquer fala anterior para iniciar uma nova
+        if (synthRef.current.speaking || synthRef.current.paused) {
+            synthRef.current.cancel();
+        }
 
-    const utterance = initSpeechSynthesis(text, lang);
-    if (utterance) {
-      window.speechSynthesis.speak(utterance);
-    }
-  };
+        // Cria uma nova instância de SpeechSynthesisUtterance para o texto atual
+        const utterance = new SpeechSynthesisUtterance(text);
+        utteranceRef.current = utterance; // Armazena a referência para o Utterance atual
 
-  // Função para pausar a leitura
-  const pause = () => {
-    if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
-      window.speechSynthesis.pause();
-      setIsPaused(true);
-    }
-  };
+        utterance.lang = lang;
+        utterance.volume = volume;
+        utterance.rate = rate;
+        utterance.pitch = pitch;
 
-  // Função para retomar a leitura
-  const resume = () => {
-    if (window.speechSynthesis.paused) {
-      window.speechSynthesis.resume();
-      setIsPaused(false);
-    }
-  };
+        // Encontra uma voz em português se disponível
+        const voices = synthRef.current.getVoices();
+        const portugueseVoice = voices.find(voice => voice.lang === 'pt-BR' || voice.lang === 'pt_BR'); // Verifica ambas as variações
+        if (portugueseVoice) {
+            utterance.voice = portugueseVoice;
+        } else {
+            console.warn("Nenhuma voz em português (pt-BR) encontrada. Usando a voz padrão do sistema.");
+        }
 
-  // Função para parar a leitura completamente
-  const stop = () => {
-    if (window.speechSynthesis.speaking || window.speechSynthesis.paused) {
-      window.speechSynthesis.cancel();
-      setIsSpeaking(false);
-      setIsPaused(false);
-    }
-  };
+        // Define os callbacks para os eventos
+        utterance.onstart = () => {
+            setIsSpeaking(true);
+            setIsPaused(false);
+            // console.log("Fala iniciada");
+        };
 
-  // Efeito de limpeza ao desmontar o componente
-  useEffect(() => {
-    return () => {
-      if (window.speechSynthesis.speaking || window.speechSynthesis.paused) {
-        window.speechSynthesis.cancel();
-      }
-    };
-  }, []);
+        utterance.onend = () => {
+            setIsSpeaking(false);
+            setIsPaused(false);
+            // console.log("Fala finalizada");
+        };
 
-  return { speak, pause, resume, stop, isSpeaking, isPaused };
+        utterance.onerror = (event) => {
+            console.error('Erro na síntese de fala:', event.error);
+            setIsSpeaking(false);
+            setIsPaused(false);
+        };
+
+        // Inicia a fala
+        synthRef.current.speak(utterance);
+
+    }, []); // Dependências: nenhuma para que a função speak não seja recriada desnecessariamente
+
+    const pause = useCallback(() => {
+        if (synthRef.current && synthRef.current.speaking && !synthRef.current.paused) {
+            synthRef.current.pause();
+            setIsPaused(true);
+            // console.log("Fala pausada");
+        }
+    }, []);
+
+    const resume = useCallback(() => {
+        if (synthRef.current && synthRef.current.paused) {
+            synthRef.current.resume();
+            setIsPaused(false);
+            // console.log("Fala resumida");
+        }
+    }, []);
+
+    const stop = useCallback(() => {
+        if (synthRef.current && (synthRef.current.speaking || synthRef.current.paused)) {
+            synthRef.current.cancel(); // Cancela todas as SpeechSynthesisUtterances na fila
+            setIsSpeaking(false);
+            setIsPaused(false);
+            // console.log("Fala parada");
+        }
+    }, []);
+
+    // Efeito de limpeza: garante que qualquer fala ativa seja cancelada ao desmontar o componente que usa o hook
+    useEffect(() => {
+        return () => {
+            if (synthRef.current && (synthRef.current.speaking || synthRef.current.paused)) {
+                synthRef.current.cancel();
+                // console.log("Fala cancelada na desmontagem do componente");
+            }
+        };
+    }, []);
+
+    return { speak, pause, resume, stop, isSpeaking, isPaused };
 };
 
 export default useTextToSpeech;

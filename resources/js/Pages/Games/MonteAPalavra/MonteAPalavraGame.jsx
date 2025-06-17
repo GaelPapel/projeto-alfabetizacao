@@ -1,19 +1,11 @@
 // resources/js/Pages/Games/MonteAPalavra/MonteAPalavraGame.jsx
 
 import React, { useState, useEffect, useMemo, useCallback } from 'react'; //
-// Importe os ícones que deseja usar
 import { FaPlay, FaRedo, FaCheck, FaTimes, FaVolumeUp } from 'react-icons/fa'; //
 import useTextToSpeech from '@/hooks/useTextToSpeech'; // Reutiliza o hook
-
-// Importe o CSS Module
+import ReadTextButton from '@/Components/ReadTextButton/ReadTextButton.jsx';
 import styles from './MonteAPalavraGame.module.css'; //
-
-// Importar o AppLayout. Certifique-se que o caminho está correto.
 import AppLayout from '@/Layouts/AppLayout'; // <<<<<<<< NOVA LINHA AQUI
-
-// Dados mockados para simular a API.
-// A 'silabas' ou 'letrasEmbaralhadas' é crucial aqui.
-// Para simplificar, vou usar letras embaralhadas. Se preferir sílabas, adapte.
 const initialGameData = [
     { id: 1, palavra: "CASA", imagem: "/assets/images/casa.jpg", silabas: ["C", "A", "S", "A"] }, //
     { id: 2, palavra: "BOLA", imagem: "/assets/images/bola.jpg", silabas: ["L", "A", "B", "O"] }, //
