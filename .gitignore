@@ -42,4 +42,5 @@ psd
 thumb
 sketch
 
-# End of https://www.toptal.com/developers/gitignore/api/laravel
+/public/build/
+/public/build/assets/
