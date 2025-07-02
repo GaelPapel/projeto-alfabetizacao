@@ -1,0 +1,322 @@
+/* resources/js/Pages/Games/MonteAPalavra/MonteAPalavraGame.module.css */
+
+.gameContainer {
+    display: flex;
+    justify-content: center; /* Centraliza o card do jogo */
+    align-items: center; /* Centraliza verticalmente o card */
+    min-height: 100%; /* Garante que o container ocupe toda a altura disponível do 'pageContent' */
+    width: 100%; /* Garante que o container ocupe toda a largura disponível do 'pageContent' */
+    padding: 10px; /* Padding menor para dar mais espaço ao conteúdo */
+    box-sizing: border-box; /* Inclui padding na largura e altura total */
+    overflow: hidden; /* **Importante**: Esconde qualquer overflow, especialmente horizontal */
+}
+
+.gameCard {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px; /* Reduzir um pouco o padding interno */
+    max-width: 600px; /* Diminuir a largura máxima do card */
+    width: 98%; /* Quase toda a largura disponível, com uma pequena margem */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Reduzir espaçamento entre elementos internos */
+    box-sizing: border-box;
+    overflow: hidden; /* Previne que o conteúdo do card transborde */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px; /* Reduzir espaçamento abaixo */
+    flex-wrap: wrap; /* Permite quebrar linha em telas muito pequenas */
+    gap: 10px; /* Espaçamento entre os itens do header em wrap */
+}
+
+.title {
+    font-size: 2em; /* Reduzir um pouco o tamanho da fonte */
+    color: #4CAF50;
+    margin: 0;
+    flex-grow: 1; /* Permite que o título ocupe o espaço */
+    text-align: left;
+    min-width: 150px; /* Largura mínima para o título não sumir */
+}
+
+.scoreDisplay {
+    font-size: 1.3em; /* Reduzir o tamanho da fonte */
+    color: #333;
+    font-weight: bold;
+    background-color: #e0e0e0;
+    padding: 6px 12px; /* Reduzir padding */
+    border-radius: 20px;
+    white-space: nowrap; /* Evita que o texto "Pontos: 0" quebre */
+}
+
+.gameInstruction {
+    font-size: 1.1em; /* Reduzir o tamanho da fonte */
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.questionSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Reduzir espaçamento */
+    margin-bottom: 15px;
+}
+
+.questionImage {
+    max-width: 95%; /* Garante que a imagem se ajuste ao card, com margem */
+    height: auto;
+    max-height: 200px; /* Altura máxima para imagens, evita imagens gigantes */
+    object-fit: contain; /* Redimensiona a imagem para caber na caixa sem cortar */
+    border: 3px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.questionImage:hover {
+    transform: scale(1.02);
+}
+
+.targetWordDisplay {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Permite que as letras quebrem para a próxima linha */
+    gap: 6px; /* Reduzir espaçamento entre as letras */
+    margin-bottom: 20px;
+}
+
+.targetWordLetter {
+    background-color: #f0f0f0;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    width: 45px; /* Reduzir largura dos slots */
+    height: 55px; /* Reduzir altura dos slots */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6em; /* Reduzir tamanho da fonte */
+    font-weight: bold;
+    color: #333;
+    transition: all 0.2s ease-in-out;
+    box-sizing: border-box;
+    cursor: default;
+}
+
+.targetWordLetter.filled {
+    background-color: #e6ffe6;
+    border-color: #4CAF50;
+    cursor: pointer;
+}
+
+.syllableBank {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Permite que as sílabas quebrem linha */
+    gap: 8px; /* Reduzir espaçamento entre sílabas */
+    margin-bottom: 20px;
+}
+
+.syllableChip {
+    background-color: #FFC107;
+    color: #333;
+    padding: 10px 15px; /* Reduzir padding */
+    border: none;
+    border-radius: 10px;
+    font-size: 1.3em; /* Reduzir tamanho da fonte */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    min-width: 50px; /* Largura mínima para o chip */
+    box-sizing: border-box;
+}
+
+.syllableChip:not(:disabled):hover {
+    background-color: #e0a800;
+    transform: translateY(-2px);
+}
+
+.syllableChip:disabled {
+    background-color: #cccccc;
+    color: #888888;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.syllableChip.used {
+    background-color: #f0f0f0;
+    color: #aaaaaa;
+    border: 1px solid #e0e0e0;
+    pointer-events: none;
+    box-shadow: none;
+    opacity: 0.8;
+}
+
+.buttonsContainer {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Reduzir espaçamento entre botões */
+    margin-top: 15px;
+    flex-wrap: wrap; /* Permite quebrar linha */
+}
+
+.actionButton {
+    padding: 10px 20px; /* Reduzir padding */
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em; /* Reduzir tamanho da fonte */
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.actionButton.primary { background-color: #007bff; color: white; }
+.actionButton.primary:hover:not(:disabled) { background-color: #0056b3; transform: translateY(-2px); }
+.actionButton.success { background-color: #28a745; color: white; }
+.actionButton.success:hover:not(:disabled) { background-color: #218838; transform: translateY(-2px); }
+.actionButton.secondary { background-color: #6c757d; color: white; }
+.actionButton.secondary:hover:not(:disabled) { background-color: #5a6268; transform: translateY(-2px); }
+
+.actionButton:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+    box-shadow: none;
+}
+
+.feedbackBubble {
+    padding: 12px 20px; /* Reduzir padding */
+    border-radius: 10px;
+    font-size: 1em; /* Reduzir tamanho da fonte */
+    font-weight: bold;
+    margin-top: 15px;
+    animation: fadeIn 0.3s ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.feedbackBubble.correct { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+.feedbackBubble.incorrect {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+    10%, 90% { transform: translate3d(-1px, 0, 0); }
+    20%, 80% { transform: translate3d(2px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+    40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+.gameCardShake {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+
+/* Media Queries para responsividade mais agressiva */
+@media (max-width: 768px) {
+    .gameCard {
+        padding: 15px;
+        max-width: 98%; /* Garante que ocupe quase toda a largura */
+        gap: 10px;
+    }
+
+    .title {
+        font-size: 1.6em;
+        text-align: center; /* Centraliza o título em telas menores */
+    }
+    .scoreDisplay {
+        font-size: 1.1em;
+    }
+    .gameInstruction {
+        font-size: 0.95em;
+    }
+    .questionImage {
+        max-height: 180px; /* Reduz altura máxima da imagem */
+    }
+    .targetWordLetter {
+        width: 40px;
+        height: 50px;
+        font-size: 1.4em;
+    }
+    .syllableChip {
+        padding: 8px 12px;
+        font-size: 1.1em;
+        min-width: 40px;
+    }
+    .actionButton {
+        padding: 8px 18px;
+        font-size: 1em;
+    }
+    .header {
+        flex-direction: column; /* Coloca título e score um abaixo do outro */
+        gap: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gameContainer {
+        padding: 5px; /* Padding mínimo */
+    }
+    .gameCard {
+        padding: 10px;
+        gap: 8px;
+    }
+    .title {
+        font-size: 1.4em;
+    }
+    .scoreDisplay {
+        font-size: 1em;
+    }
+    .gameInstruction {
+        font-size: 0.9em;
+    }
+    .questionImage {
+        max-height: 150px; /* Altura máxima ainda menor */
+    }
+    .targetWordLetter {
+        width: 35px;
+        height: 45px;
+        font-size: 1.2em;
+        gap: 4px;
+    }
+    .syllableChip {
+        padding: 6px 10px;
+        font-size: 1em;
+        min-width: unset; /* Permite que o chip seja menor se necessário */
+    }
+    .buttonsContainer {
+        flex-direction: column; /* Botões empilhados em telas muito pequenas */
+        gap: 10px;
+    }
+    .actionButton {
+        width: 100%; /* Botões ocupam toda a largura */
+        justify-content: center; /* Centraliza texto do botão */
+    }
+    .feedbackBubble {
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+}

@@ -1,0 +1,168 @@
+/* resources/js/Pages/Games/MemoriaGame/MemoriaGame.module.css */
+
+.gameContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+    min-height: 100vh;
+}
+
+.gameTitle {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    text-align: center;
+}
+
+.infoBar {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.infoItem {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #555;
+}
+
+.resetButton,
+.startButton {
+    padding: 10px 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.resetButton:hover,
+.startButton:hover {
+    background-color: #0056b3;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 colunas */
+    gap: 15px;
+    max-width: 800px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Estilos para a carta */
+.cardOuter {
+    width: 150px; /* Tamanho da carta */
+    height: 150px; /* Tamanho da carta */
+    perspective: 1000px; /* Para a transição 3D, se ainda houver alguma */
+    cursor: pointer;
+    border-radius: 10px;
+    overflow: hidden; /* Garante que nada saia dos limites arredondados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    display: flex; /* Para centralizar o conteúdo */
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f8f8; /* Fundo da carta */
+}
+
+.cardOuter:hover {
+    transform: scale(1.03); /* Leve efeito de hover */
+}
+
+/* Carta selecionada para feedback visual */
+.cardOuter.selected {
+    border: 4px solid #ffcc00; /* Borda amarela */
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
+}
+
+/* Carta combinada */
+.cardOuter.matched {
+    /* Efeito para cartas combinadas */
+    background-color: #d4edda; /* Verde claro */
+    cursor: default;
+    opacity: 0.8;
+    transform: scale(0.95); /* Levemente menor */
+    box-shadow: 0 0 10px rgba(0, 128, 0, 0.5);
+}
+
+.cardInner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    text-align: center;
+    /* Removendo as propriedades de transformação para virar */
+    /* transform-style: preserve-3d; */
+    /* transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1); */
+}
+
+.cardFront {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* backface-visibility: hidden; */ /* Não é necessário se não há rotação */
+    background-color: #fff; /* Fundo da frente da carta */
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* transform: rotateY(0deg); */ /* Sempre visível, não precisa rotacionar */
+}
+
+.cardImage {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.cardText {
+    font-size: 2.2em; /* Aumentado para texto ser mais visível */
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    padding: 5px;
+    user-select: none; /* Impede seleção de texto */
+}
+
+/* Telas de Início/Fim de Jogo */
+.startScreen,
+.endGameScreen {
+    text-align: center;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 50px;
+}
+
+.instruction {
+    font-size: 1.3em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.endGameScreen h2 {
+    color: #28a745;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+.endGameScreen p {
+    font-size: 1.5em;
+    color: #555;
+    margin-bottom: 30px;
+}

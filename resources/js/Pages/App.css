@@ -1,0 +1,181 @@
+/* src/App.css */
+body, html, #root {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%; /* Garante 100% da largura da viewport */
+    overflow-x: hidden; /* **ESSENCIAL** para eliminar a barra de rolagem horizontal em todo o documento */
+    box-sizing: border-box; /* O padding e a borda não aumentam o tamanho total do elemento */
+}
+
+.App {
+    display: flex; /* Permite que sidebar e main-content fiquem lado a lado */
+    min-height: 100vh; /* Garante que o container ocupe toda a altura da tela */
+    background-color: #f0f2f5;
+    font-family: Arial, sans-serif;
+    width: 100%; /* Ocupa 100% da largura do pai (que é html/body) */
+    overflow-x: hidden; /* Prevenção de scroll horizontal para o container principal */
+    box-sizing: border-box;
+}
+
+/* Estilos para o componente SidebarContainer (assumindo que ele tem uma largura fixa e é fixo) */
+/* CUIDADO: Estas regras CSS devem ser aplicadas à sua sidebar real, seja pela classe 'aside' ou por outra */
+aside { /* Se o seu SidebarContainer renderiza uma tag <aside> */
+    width: 250px; /* Largura fixa da sua sidebar */
+    min-width: 250px; /* Garante que não encolha abaixo de 250px */
+    position: fixed; /* A sidebar fica fixa na tela */
+    top: 0;
+    left: 0;
+    height: 100vh; /* Ocupa toda a altura da viewport */
+    background-color: #333; /* Cor de fundo do menu */
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 1000; /* Garante que fique acima de outros conteúdos */
+    overflow-y: auto; /* Permite rolagem vertical se o conteúdo da sidebar for muito longo */
+    display: flex; /* Se a sidebar tiver um layout interno flex */
+    flex-direction: column; /* Organiza itens em coluna */
+    align-items: flex-start; /* Alinha itens ao início */
+}
+
+/* Estilos para o conteúdo principal (que estará ao lado da sidebar) */
+.App-main-content {
+    flex-grow: 1; /* Faz com que ocupe todo o espaço restante disponível */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo horizontalmente dentro de main-content */
+    justify-content: flex-start; /* Alinha o conteúdo ao topo de main-content */
+    padding: 20px;
+    box-sizing: border-box;
+    /* *** AQUI ESTÁ A CHAVE PARA O ALINHAMENTO COM A SIDEBAR FIXA *** */
+    margin-left: 250px; /* Empurra o conteúdo para a direita da sidebar fixa */
+    width: calc(100% - 250px); /* Garante que a largura do main-content seja o restante da tela */
+    overflow-x: hidden; /* Impede que o próprio conteúdo principal cause rolagem */
+}
+
+.App-header {
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%; /* Ocupa a largura total do App-main-content */
+    background: none;
+    box-sizing: border-box;
+}
+
+.App-header h1 {
+    font-size: 2.5em;
+    color: #000000;
+}
+
+.App-header p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+.App-content {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    max-width: 100%; /* Garante que o conteúdo interno não exceda a largura do App-main-content */
+    width: 100%; /* Ocupa toda a largura disponível */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box;
+    overflow-x: hidden; /* Prevenção de overflow no App-content */
+}
+.App-content p {
+    font-size: 1em;
+    color: #333;
+    line-height: 1.6;
+}
+
+.App-footer {
+    margin-top: auto; /* Empurra o footer para o final */
+    font-size: 0.8em;
+    color: #777;
+    width: 100%; /* Ocupa a largura total do App-main-content */
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+/* Media Queries para responsividade da sidebar e do layout geral */
+@media (max-width: 768px) {
+    .App {
+        flex-direction: column; /* Stack sidebar and main content vertically */
+    }
+
+    aside { /* Sua sidebar */
+        width: 100% !important; /* Sidebar ocupa toda a largura */
+        height: auto !important; /* Altura automática para conteúdo */
+        position: relative !important; /* Não é mais fixa, rola com o conteúdo */
+        padding: 10px 0 !important;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+        /* Remova display: flex, flex-direction, justify-content, etc. se forem sobrescritos pelo seu SidebarContainer.jsx */
+        /* ou configure-os aqui para o layout horizontal dos botões */
+        display: flex;
+        flex-direction: row; /* Itens do menu em linha */
+        justify-content: space-around; /* Distribui o espaço entre os itens */
+        flex-wrap: wrap; /* Permite que os itens quebrem linha */
+        align-items: center;
+        z-index: 999; /* Z-index para ficar acima se houver algum elemento abaixo */
+    }
+    aside h2 {
+        display: none; /* Esconde o título do menu em telas pequenas */
+    }
+    aside ul { /* Se tiver uma lista de navegação */
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        padding: 0; /* Remover padding padrão de lista */
+        margin: 0; /* Remover margin padrão de lista */
+        list-style: none; /* Remover marcadores de lista */
+    }
+    aside li {
+        margin: 5px; /* Espaçamento entre os itens do menu */
+    }
+    aside button { /* Estilo dos botões/links dentro da sidebar */
+        width: auto !important;
+        padding: 10px 15px !important;
+        font-size: 0.9em !important;
+        margin: 0 5px !important; /* Ajuste a margem entre botões */
+    }
+    aside button span { /* Ícones dentro dos botões */
+        font-size: 1.2em !important;
+    }
+
+    /* ESSENCIAL: Main content se ajusta quando a sidebar não é mais fixa */
+    .App-main-content {
+        margin-left: 0; /* Remove o espaçamento fixo da sidebar */
+        width: 100%; /* Agora ocupa toda a largura disponível */
+        padding: 15px; /* Ajusta o padding para telas menores */
+    }
+
+    .App-header h1 {
+        font-size: 2em;
+    }
+}
+
+/* Media query adicional para celulares muito pequenos (menos de 480px de largura) */
+@media (max-width: 480px) {
+    .App-main-content {
+        padding: 10px; /* Reduz padding ainda mais */
+    }
+    .App-content {
+        padding: 15px;
+    }
+    .App-header h1 {
+        font-size: 1.8em;
+    }
+    .App-header p {
+        font-size: 1em;
+    }
+    aside button {
+        font-size: 0.8em !important;
+        padding: 8px 10px !important;
+    }
+}
